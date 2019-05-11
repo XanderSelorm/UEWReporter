@@ -1,0 +1,197 @@
+/* custom template */
+html, body {
+    font-family:verdana,arial,sans-serif;
+  }
+  
+  .pagetop{
+     margin-top: 30px;
+  }
+  
+  .nav {
+    font-family:Arial,sans-serif;
+    font-size:13px;
+  }
+  
+  
+  hr {
+   border-color:#dedede;
+  }
+ 
+  //NAVBAR BLUE
+  /*.navbar-blue {
+     border-width:0;
+     background-color:#2c2b7c;
+     color:#ffffff;
+     font-family:arial,sans-serif;
+     top:0;
+     width:inherit;
+  }
+  
+  .navbar-blue li > a,.navbar-toggle  {
+    color:#efefef;
+  }
+  
+  .navbar-blue .dropdown-menu li a {
+    color:#2c2b7c;
+  }
+  
+  .navbar-blue .dropdown-menu li > a {
+    padding-left:30px;
+  }
+  
+  .navbar-blue li>a:hover, .navbar-blue li>a:focus, .navbar-blue .open, .navbar-blue .open>a, .navbar-blue .open>a:hover, .navbar-blue .open>a:focus {
+    background-color:#1e1d5a;
+    color:#fff;
+  }
+  
+  .logo {
+   display:block;
+   padding:3px;
+   color:#fff;
+   height:28px;
+   margin:9px;
+   margin-right:2px;
+   margin-left:15px;
+   font-size:20px;
+   font-weight:700;
+   text-align:center;
+   text-decoration:none;
+   text-shadow:0 0 1px;
+   border-radius:2px;
+  }
+  
+  .logo:hover{
+    color:#fff;
+  }
+  */
+
+  
+  
+  /* bootstrap overrides */
+  .text-danger{
+    color: red !important;
+  }
+  
+  h1,h2,h3 {
+    font-weight:800;
+  }
+  
+  
+  .btn-primary,.label-primary,.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus  {
+     background-color:#2c2b7c;
+     color:#fffffe;
+  }
+  .btn-default {
+     color:#666666;
+     text-shadow:0 0 1px rgba(0,0,0,.3);
+  }
+  
+  .panel textarea, .well textarea, textarea.form-control
+  {
+    resize: none;
+  }
+   
+  .badge{
+    color:#2c2b7c;
+    background-color:#fff;
+  }
+  .badge:hover, .badge-inverse{
+    background-color:#2c2b7c;
+    color:#fff;
+  }
+     
+  .modal-header, .modal-footer {
+     background-color:#f2f2f2;
+     font-weight:800;
+     font-size:12px;
+  }
+  
+  .modal-footer i, .well i {
+     font-size:20px;
+     color:#c0c0c0;
+  }
+  
+  .modal-body {
+     padding:0px;
+  }
+  
+  .modal-body textarea.form-control
+  {
+    resize: none;
+    border:0;
+    box-shadow:0 0 0;
+  }
+  
+  small.text-muted {
+   font-family:courier,courier-new,monospace;
+  }
+  
+  /*BODY CONTENT-LOGIN/REGISTER*/
+  header.masthead {
+    position: relative;
+    background-color: rgba(52, 58, 64, 0.71);
+    background: url("https://cloud.lovindublin.com/images/_featuredImage/david-travis-547046-unsplash.jpg?mtime=20190314185429") no-repeat center center;
+    background-size: cover;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  
+  header.masthead .overlay {
+    position: absolute;
+    background-color: #007bff62;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  header.masthead h1, h5 {
+    color: white;
+  }
+  
+  @media (min-width: 768px) {
+  
+  header.masthead-login {
+      padding-top: 11rem;
+      padding-bottom: 11rem;
+    }
+    header.masthead h1 {
+      font-size: 3rem;
+    }
+
+    
+  }
+  
+  /*REGISTRATION FORM*/
+  .registrationInput{
+      width: 100%;
+  }
+  /*REGISTRATION FORM END*/
+  
+  /*NOTOFICATION STRIP ITEMS*/
+  .notificationStripItem{
+      background-color: #ffffff;
+      padding: 15px 5px 15px 5px;
+      margin: 0px 0px 0px 0px;
+      border-radius: 0px 0px 0px 0px;
+      border-style: solid;
+      border-width: thin;
+      border-color: rgba(190, 190, 190, 0.38);
+      box-shadow: 0px 1px 10px 1px rgba(117, 117, 117, 0.21); 
+  }
+  
+  
+  /* adjust the contents on smaller devices */
+  @media (max-width: 768px) {
+  
+   .column .padding {
+     padding: 7px;
+   }
+  
+  }
+  
+  @media (max-width: 768px) {
+     .out{
+     display: none;
+  }
+  }

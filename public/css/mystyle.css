@@ -1,0 +1,239 @@
+
+
+/* template */
+body {
+  height: 100vh;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  padding-top: 60px;
+}
+
+/* body padding for fixed navbar */
+.app {
+    padding-top: 75px;
+}
+
+/* hidden spacer before sections for proper offset */
+/* section:before {
+    height: 50px;
+    content: "";
+    display:block;
+} */
+
+/* helpers */
+.vh-50 {
+    min-height: 50vh;
+}
+.vh-75 {
+    min-height: 75vh;
+}
+.vh-100 {
+    min-height: 100vh;
+}
+
+
+/* Customs */
+.nav-item>a{
+    color: white !important;
+}
+
+/* .newsStripItem>div{
+  background-color: rgba(226, 226, 226, 0.582);
+  padding: 15px 5px 15px 20px;
+    margin: 0px 0px -10px 0px;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 0px 1px 10px 1px rgba(117, 117, 117, 0.21); 
+} */
+ 
+
+/* News Strip (NEW Card Style) */
+.gedf-wrapper {
+  margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+  .gedf-main {
+      padding-left: 4rem;
+      padding-right: 4rem;
+  }
+  .gedf-card {
+      margin-bottom: 1rem;
+      /* box-shadow: 0px 1px 10px 1px rgba(117, 117, 117, 0.21);  */
+  }
+}
+/* End */
+
+
+/* .side-menu{
+    overflow-y: auto;
+    position: fixed;
+    height: 100vh;
+    background-color: #e9ecef !important;
+} 
+/* 
+.list-group-item{
+    width: 100%;
+} */
+
+
+/* adjust the contents on smaller devices */
+  
+  
+  /* @media (max-width: 768px) {
+    .side-menu{
+        padding-bottom: 20px !important;
+        height: 100%;
+        background-color: #e9ecef !important;
+    }
+    aside{
+        position: unset;
+        width: unset;
+    }
+  } */
+
+/* ADMIN SIDEBAR START */
+  #collapse1 .nav-link{
+      color: #007bff;
+      background-color: rgba(226, 226, 226, 0.582);
+  }
+  #collapse1 .nav-link.active{
+    color: white;
+    background-color: #007bff;
+}
+
+
+#sidebar-wrapper {
+    background-color: #bebebe3f;
+
+      min-height: 100vh;
+      margin-left: -15rem;
+      -webkit-transition: margin .25s ease-out;
+      -moz-transition: margin .25s ease-out;
+      -o-transition: margin .25s ease-out;
+      transition: margin .25s ease-out;
+    }
+
+  @media (max-width: 768px) {
+    #sidebar-wrapper {
+      min-width: 15rem;
+        margin-left: -15rem;
+      }
+    }
+    
+    
+    
+    #page-content-wrapper {
+      width: 100vw;
+    }
+    
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: 0;
+    }
+    
+    @media (min-width: 768px) {
+
+        #page-content-wrapper {
+              min-height: 100vh;
+              /* margin-right: -25rem; */
+              -webkit-transition: margin .25s ease-out;
+              -moz-transition: margin .25s ease-out;
+              -o-transition: margin .25s ease-out;
+              transition: margin .25s ease-out;
+            }
+
+      #sidebar-wrapper {
+        margin-left: 0;
+      }
+    
+      #page-content-wrapper {
+        min-width: 0;
+        width: 100vw;
+      }
+    
+      #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+      }
+    }
+/* ADMIN SIDEBAR END */
+
+/* Header MastHead */
+    header.masthead {
+      background-color: #868e96;
+      background-attachment: scroll;
+      position: relative;
+    }
+    div.header-image{
+      background: no-repeat content-box center;
+      background-size: cover;
+    }
+    
+    header.masthead .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #212529;
+      opacity: 0.7;
+    }
+
+    header.masthead .site-heading {
+      color: white;
+    }
+
+    /* .site-heading-buttons button {
+      margin-top: 10px;
+    } */
+    
+    @media only screen and (min-width: 768px) {
+      header.masthead .site-heading {
+        padding: 200px 0;
+      }
+    }
+    
+    header.masthead .site-heading {
+      text-align: center;
+    }
+    
+    header.masthead .site-heading h1 {
+      font-size: 50px;
+      margin-top: 0;
+    }
+    
+    header.masthead .site-heading .subheading {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.1;
+      display: block;
+      margin: 10px 0 0;
+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    
+    @media only screen and (min-width: 768px) {
+      header.masthead .site-heading h1 {
+        font-size: 80px;
+      }
+    }
+    
+
+    header.headMast .header-image{
+      margin-top: -10rem;
+      height: 30rem;
+    }
+
+/* header masthead end */
+
+    #myContent{
+      margin-top: -12rem;
+      margin-bottom: 6rem;
+    }
+
+    .newsStrip{
+      margin: 3rem;
+      background-color: white;
+    }
+
+    .menu-toggle{
+        transition: 0.5s ease;
+        transform: rotateY(180deg);
+    }
