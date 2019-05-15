@@ -113,7 +113,7 @@ class PostsController extends Controller
     {
         $post = Post::where('id', $id)->with('tags')->first();
         // dd($post);
-        return view('posts.show')->with('post', $post);
+        return view('manage.posts.show')->with('post', $post);
     }
 
     /**

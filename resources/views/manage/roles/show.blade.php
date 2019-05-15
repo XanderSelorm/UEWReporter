@@ -1,12 +1,12 @@
 @extends('layouts.manage')
 
 @section('content')
-  <div class="col">
+  <div class="col-md-12">
       <div class="row">
-          <div class="col mr-auto">
+          <div class="mr-auto">
             <a href="{{ URL::previous() }}" class="btn btn-primary"><i class="fa fa-caret-left"></i> Go Back</a>
           </div>
-          <div class="col ml-auto">
+          <div class=" ml-auto">
             <a href="{{route('roles.edit', $role->id)}}" class="btn btn-success"><i class="fa fa-user-plus"></i> Edit this Role</a>
           </div>
       </div>  
@@ -21,7 +21,7 @@
     <hr>
 
     <div class="col-md-12">
-        <div class="container my-3">
+        <div class="col my-3">
             <h2 class="title">Permissions:</h1>
             <ul>
                 @foreach ($role->permissions as $r)

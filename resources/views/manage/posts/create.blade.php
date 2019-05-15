@@ -15,6 +15,12 @@
                 {{Form::label('title','Title')}}
                 {{Form::text('title','', ['class' => 'form-control', 'placeholder' => 'Announcement Title...'])}}
             </div>
+
+            <div class="form-group">
+                <slug-widget url="{{url('/')}}" subdirectory="blog" :title="title" @copied="slugCopied" @slug-changed="updateSlug"></slug-widget>
+                <input type="hidden" v-model="slug" name="slug" />
+            </div>
+
             <div class="form-group">
                 {{Form::label('body','Body')}}
                 {{Form::textarea('body','', ['id' => 'body-ckeditor', 'class' => 'form-control', 'placeholder' => 'Announcement Content...'])}}

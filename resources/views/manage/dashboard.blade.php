@@ -12,12 +12,12 @@
                                 <a class="h2">Dashboard</a>
                             </div>
                             <div class="ml-auto mr-3">
-                                <a href="/manage/posts/create" class="btn btn-primary"><i class="fa fa-plus"></i> Publish</a>
+                                {{-- <a href="/manage/posts/create" class="btn btn-primary"><i class="fa fa-plus"></i> Publish</a> --}}
                             </div>
                         </div>
                         <hr>
 
-                    @if(count($posts) > 0)
+                    {{-- @if(count($posts) > 0)
                         <table class="table table-striped table-hover table-responsive-md table-condensed">
                             <colgroup>
                                 <col style="width: 50%;">
@@ -55,10 +55,8 @@
 
                                             <a class="btn btn-sm" title="Delete Post">
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                                    {{-- {{Form::hidden('_method', 'DELETE')}} --}}
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                    {{-- <!--{{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}--> --}}
                                                 </form>
                                             </a>
                                         </td>
@@ -70,7 +68,7 @@
                     @else
                         <p>You have no posts</p>
                         <small>Click on <strong><i class="fa fa-plus"></i> Publish</strong> on the navigation bar to create an Announcement.</small> 
-                    @endif
+                    @endif --}} 
                 </div>
             </div>
         </div>

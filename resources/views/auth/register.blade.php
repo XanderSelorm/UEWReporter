@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-   <div class="header-image" style="background-image: url('https://dhrm.utah.gov/wp-content/uploads/Schedule-Registration-Image.jpg');">
+   <div class="header-image" style="background-image: url('/storage/header_images/register-bg.jpg');">
       <div class="overlay"></div>
       <div class="container">
          <div class="row">

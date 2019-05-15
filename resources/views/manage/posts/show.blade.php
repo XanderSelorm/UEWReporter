@@ -10,7 +10,7 @@
             @if(Auth::user()->id == $post->user_id)
                 {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right']) !!}
                     {{Form::hidden('_method', 'DELETE')}}
-                    <button type="submit" class="btn btn-danger btn-sm">Delete <i class="fa fa-trash"></i></button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Post?')">Delete <i class="fa fa-trash"></i></button>
                 {!! Form::close()!!}
 
                 <a href="/manage/posts/{{$post->id}}/edit" class="btn btn-success btn-sm pull-right mr-3">Edit <i class="fa fa-edit"></i></a>
@@ -24,8 +24,8 @@
             <i class="fa fa-user"></i> {{$post->user->name}} &emsp; 
 
             <!--This is not functioning well-->
-            @if (count($tags) > 0)
-                @foreach( $tags as $tag )
+            @if (!empty($post->tags))
+                @foreach( $post->tags as $tag )
                     <a href="/posts/tags/{{ $tag }}" class="text-dark"><i class="fa fa-list-ul"></i> {{ $post->title }}</a>
                     @break
                 @endforeach

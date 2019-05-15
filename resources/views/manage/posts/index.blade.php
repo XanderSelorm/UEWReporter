@@ -54,14 +54,14 @@
                                         <td>
                                             <a href="posts/{{$post->id}}" class="btn btn-primary btn-sm m-1" title="View Post"><i class="fa fa-eye"></i></a>
 
-                                            <a href="manage/posts/{{$post->id}}/edit" class="btn btn-success btn-sm m-1" title="Edit Post"><i class="fa fa-edit"></i></a>
+                                            <a href="/manage/posts/{{$post->id}}/edit" class="btn btn-success btn-sm m-1" title="Edit Post"><i class="fa fa-edit"></i></a>
 
                                             <a class="btn btn-sm" title="Delete Post">
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                                     @csrf
                                                     {{-- {{Form::hidden('_method', 'DELETE')}} --}}
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Post?')"><i class="fa fa-trash"></i></button>
                                                     {{-- <!--{{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}--> --}}
                                                 </form>
                                             </a>

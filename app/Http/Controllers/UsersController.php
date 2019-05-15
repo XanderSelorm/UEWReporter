@@ -53,10 +53,10 @@ class UsersController extends Controller
         $user->save();
 
         if ($user->save()){
-            return redirect()->route('manage.users.show')->with('success', 'User Created Successfully');
+            return redirect()->route('users.show', $user->id)->with('success', 'User Created Successfully');
         } 
         else {
-            return redirect()->route('manage.users.create')->with('danger', 'Sorry, a problem occured while creating the User');
+            return redirect()->route('users.create')->with('danger', 'Sorry, a problem occured while creating the User');
         } 
     }
 

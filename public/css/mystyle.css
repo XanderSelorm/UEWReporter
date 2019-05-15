@@ -8,8 +8,12 @@ body {
   padding-top: 60px;
 }
 
+#body{
+  background-color: #eeeeee2d;
+}
+
 /* body padding for fixed navbar */
-.app {
+.container-app {
     padding-top: 75px;
 }
 
@@ -94,11 +98,15 @@ body {
 /* ADMIN SIDEBAR START */
   #collapse1 .nav-link{
       color: #007bff;
-      background-color: rgba(226, 226, 226, 0.582);
+      background-color: rgba(226, 226, 226, 0.212)/*rgba(226, 226, 226, 0.582)*/;
+      border-width: 0px 0px 0px 5px !important;
+      border-radius: 0px;
   }
   #collapse1 .nav-link.active{
-    color: white;
-    background-color: #007bff;
+    color: #007bff;
+    background-color: rgba(226, 226, 226, 0.212)/*#007bff*/;
+    border-left-color: #007bff !important;
+    border: 0px 0px 0px;
 }
 
 
@@ -122,7 +130,7 @@ body {
     
     
     
-    #page-content-wrapper {
+    .page-content-wrapper {
       width: 100vw;
     }
     
@@ -132,7 +140,7 @@ body {
     
     @media (min-width: 768px) {
 
-        #page-content-wrapper {
+        .page-content-wrapper {
               min-height: 100vh;
               /* margin-right: -25rem; */
               -webkit-transition: margin .25s ease-out;
@@ -145,7 +153,7 @@ body {
         margin-left: 0;
       }
     
-      #page-content-wrapper {
+      .page-content-wrapper {
         min-width: 0;
         width: 100vw;
       }
@@ -163,7 +171,7 @@ body {
       position: relative;
     }
     div.header-image{
-      background: no-repeat content-box center;
+      background: no-repeat center;
       background-size: cover;
     }
     

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-   <div class="header-image"  style="background-image: url('https://blackrockdigital.github.io/startbootstrap-clean-blog/img/home-bg.jpg');">
+   <div class="header-image"  style="background-image: url('/storage/header_images/profile-bg-2.jpg');">
       <div class="overlay"></div>
       <div class="container">
          <div class="row">

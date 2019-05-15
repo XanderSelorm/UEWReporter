@@ -225,7 +225,7 @@ return [
          * Method to be called in the middleware return case.
          * Available: abort|redirect
          */
-        'handling' => 'abort',
+        'handling' => 'redirect', //previously set to 'abort'
 
         /**
          * Handlers for the unauthorized method in the middlewares.
@@ -245,10 +245,10 @@ return [
              * If the message content is empty it won't be added to the redirection.
              */
             'redirect' => [
-                'url' => '/home',
+                'url' => '/login',
                 'message' => [
                     'key' => 'error',
-                    'content' => ''
+                    'content' => ''//'You\'re not logged in. Please login to continue.'
                 ]
             ]
         ]

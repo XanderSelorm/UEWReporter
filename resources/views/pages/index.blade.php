@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-   <div class="header-image"  style="background-image: url('https://blackrockdigital.github.io/startbootstrap-clean-blog/img/home-bg.jpg');">
+   <div class="header-image"  style="background-image: url('/storage/header_images/home-bg-2.jpg');">
       <div class="overlay"></div>
       <div class="container">
          <div class="row">
@@ -12,8 +12,8 @@
 
                   <div class="site-heading-buttons mt-4">
                      @guest
-                        <button href="" class="btn btn-primary mr-3">Sign In</button>
-                        <button href="" class="btn btn-success">Sign Up</button>
+                        <a href="/login" class="col-md-2 btn btn-primary mr-3">Sign In <i class="fa fa-sign-in"></i></a>
+                        <a href="/register" class="col-md-2 btn btn-success">Sign Up <i class="fa fa-user-plus"></i></a>
                      @endguest
                   </div>
                </div>
@@ -52,9 +52,7 @@
                                  <div class="col-md-8 col-sm-8">
                                     <h5 class="mt-0 mb-0"><a class="card-link" href="/posts/{{$post->id}}">{{$post->title}}</a></h5>
                                     <p class="card-text">
-                                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit reprehenderit consectetur exercitationem odio,
-                                       quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur dolorum tempora sapiente
-                                       eius maxime quaerat...
+                                          {{ substr(strip_tags($post->body), 0, 500) }}...
                                     </p>                                 
                                  </div>
                               </div>

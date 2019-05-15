@@ -30,13 +30,13 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
 </head>
-<body id="app">
+<body id="body">
     @include('inc.navbar-manage')
     
     <div id="wrapper" class="d-flex">
         @include('inc.sidebar-manage')
 
-        <div class="col" id="page-content-wrapper">
+        <div class="col page-content-wrapper" id="app">
             @include('inc.messages')
             @yield('content')
         </div>

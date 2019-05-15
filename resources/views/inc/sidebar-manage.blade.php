@@ -41,14 +41,14 @@
             <div class="mb-4" id="administration">
                 <a href="{{route('users.index')}}" class="nav-link {{Nav::isResource('users')}} border"><i class="fa fa-users" id="icon"></i> Manage Users</a>
                 
-                <a class="nav-link {{Nav::hasSegment(['roles', 'permissions'], 2)}} border" data-toggle="collapse" href="#collapse1"><i class="fa fa-shield ml-auto" id="icon"></i> Roles &amp; Permissions <i class="fa fa-caret-down" id="toggle-icon"></i></a>
+                <a class="nav-link {{Nav::hasSegment(['roles', 'permissions'], 2)}} border" data-toggle="collapse" href="#collapse1" id="rnp"><i class="fa fa-shield" id="icon"></i> Roles &amp; Permissions <i class="fa fa-caret-down" id="toggle-icon"></i></a>
 
                 <div id="collapse1" class="navbar-collapse collapse">
-                    <a href="{{route('roles.index')}}" class="nav-link {{Nav::isResource('roles')}} border">
-                        <span  class="ml-3"><i class="fa fa-user-secret" id="icon"></i> Roles</span>
+                    <a href="{{route('roles.index')}}" class="nav-link ml-3 {{Nav::isResource('roles')}} border">
+                        <span  class=""><i class="fa fa-user-secret" id="icon"></i> Roles</span>
                     </a>
-                    <a href="{{route('permissions.index')}}" class="nav-link {{Nav::isResource('permissions')}} border">
-                        <span class="ml-3"><i class="fa fa-key" id="icon"></i> Permissions</span>
+                    <a href="{{route('permissions.index')}}" class="nav-link ml-3 {{Nav::isResource('permissions')}} border">
+                        <span class=""><i class="fa fa-key" id="icon"></i> Permissions</span>
                     </a>
                 </div>
             </div>
@@ -67,7 +67,7 @@
         $(this).toggleClass('menu-toggle');
     });
 
-    $("#administration").click(function(){
+    $("#rnp").click(function(){
         $('#toggle-icon').toggleClass('fa-caret-right fa-caret-down');
     });
 </script>

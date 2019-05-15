@@ -28,15 +28,17 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
 </head>
-<body id="app">
+<body id="body">
     @include('inc.navbar')
+    
     <header class="masthead headMast">
         @yield('header')
     </header>
-    <div class="container app" id="">
-        @include('inc.messages')
+    @include('inc.messages')
+    <div class="container container-app" id="app">
 
         <div class="" id="myContent">
+            
             @yield('content')
         </div>
     </div>
