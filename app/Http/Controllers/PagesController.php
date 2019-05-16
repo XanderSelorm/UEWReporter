@@ -9,13 +9,15 @@ use Carbon\Carbon;
 class PagesController extends Controller
 {
     public function index(){
-       $posts = Post::latest()->with('tags')->first() 
-       ->filter( request( ['month', 'year'] ) )
-       ->paginate(5);
-
-       
-
-        return view('pages.index')->with(['posts' => $posts]);//, 'allPosts' => $allPosts]);
+        if ( !is_null(Post::class) ) {    
+            $posts = Post::latest()->with('tags')->first() 
+            ->filter( request( ['month', 'year'] ) )
+            ->paginate(5);
+            return view('pages.index')->with(['posts' => $posts]);//, 'allPosts' => $allPosts]);
+        }
+        else {
+            return view('pages.index')->with(['posts' => $posts]);
+        }
     }
 
     // public function login(){

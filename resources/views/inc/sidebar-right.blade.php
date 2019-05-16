@@ -1,8 +1,10 @@
+@include('partials.discoverModal')
+
 <!--SIDEBAR-->
 <div class="">
     <div class="list-group">
         <div class="sidebar-heading">
-            <button type="button" class="btn bg-gray btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar">Categories <span class="fa fa-caret-down"></span></button>
+            <button type="button" id="btnDiscover" class="btn bg-gray btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar">Categories <span class="fa fa-caret-down"></span></button>
             
         </div>
         <div id="sidebar" class="collapse-sm">
@@ -17,7 +19,7 @@
                     
                     @endforeach
 
-                <button href="#" class="btn btn-primary btn-sm my-3">Discover <i class="fa fa-lightbulb-o"></i></button>
+                <button class="btn btn-primary btn-sm my-3" data-toggle="modal" data-target="#discoverModal">Discover <i class="fa fa-lightbulb-o"></i></button>
             </div>
         </div>
     </div>
@@ -59,3 +61,11 @@
     </footer>
 </div>
 <!--SIDEBAR END-->
+
+<script>
+$(document).ready(function() {
+    $("#btnDiscover").click(function() {
+       $("#discoverModal").modal({ backdrop : "static"}) ;
+    }); 
+});
+</script>
