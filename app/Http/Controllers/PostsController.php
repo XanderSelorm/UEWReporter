@@ -173,7 +173,7 @@ class PostsController extends Controller
         }
         $post->save();
 
-        return redirect('/dashboard')->with('success', 'Post Updated Successfully');
+        return redirect('/manage/posts')->with('success', 'Post Updated Successfully');
     }
 
     /**
