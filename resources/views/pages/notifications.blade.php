@@ -10,6 +10,7 @@
                <div class="site-heading">
                   <a class="h1">Your notifications are displayed here.</i></a>
                   <span class="subheading">Get all your notifications displayed for you here, in one piece.</span>
+                  @include('inc.messages')
 
                   <div class="site-heading-buttons mt-4">
                      @guest

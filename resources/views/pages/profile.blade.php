@@ -9,6 +9,7 @@
                <div class="site-heading">
                   <a class="h1">Personal Profile</i></a>
                   <span class="subheading">Information about you is displayed here</span>
+                  @include('inc.messages')
 
                   <div class="site-heading-buttons mt-4">
                      @guest

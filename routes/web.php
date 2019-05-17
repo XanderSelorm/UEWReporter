@@ -24,7 +24,7 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
     Route::get('/', 'ManageController@index');
     Route::get('/dashboard', 'DashboardController@index')->name('manage.dashboard');
     Route::resource('/posts', 'PostsController');
-    Route::resource('/categories', 'CategoryController');
+    Route::resource('/categories', 'CategoriesController');
     Route::resource('/users', 'UsersController');
     Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
     Route::resource('/roles', 'RolesController', ['except' => 'destroy']);
@@ -37,7 +37,7 @@ Route::get('/login', 'PagesController@login');
 Route::get('/profile', 'PagesController@profile');
 //Route::get('/content', 'PagesController@myContent');
 
-Route::resource('/posts', 'PostsController');
+Route::resource('/posts', 'SinglePostController');
 //Route::get('/posts/index', 'PostsController@index')->name('posts.index');
 //Route::get('/posts/{$post->id}', 'PostsController@show');
 

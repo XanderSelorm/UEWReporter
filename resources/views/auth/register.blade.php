@@ -9,6 +9,7 @@
                <div class="site-heading">
                   <a class="h1">UEW<strong>Messenger</strong> <i class="fa fa-comment-alt"></i></a>
                   <span class="subheading">Sign Up and receive personalized announcements<br> anywhere, anytime!</span>
+                  @include('inc.messages')
                </div>
             </div>
          </div>

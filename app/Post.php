@@ -40,4 +40,8 @@ class Post extends Model
     public function tags(){
         return $this->belongsTo(Tag::class);
     }
+
+    public function categories() {
+        return $this->belongsTo(App\Category::class);
+    }
 }

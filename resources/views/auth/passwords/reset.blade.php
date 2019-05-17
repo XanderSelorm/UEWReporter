@@ -1,7 +1,24 @@
 @extends('layouts.app')
 
+@section('header')
+   <div class="header-image" style="background-image: url('/storage/header_images/home-bg.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+               <div class="site-heading">
+                  <a class="h1">Welcome Back!</a>
+                  <span class="subheading">Fill in the form and get access to all the latest announcements!</span>
+                  @include('inc.messages')
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+@endsection
+
 @section('content')
-<div class="container">
+<div class="col" id="myContent">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

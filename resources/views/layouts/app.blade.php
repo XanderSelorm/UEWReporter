@@ -32,22 +32,20 @@
     @include('inc.navbar')
     
     <header class="masthead headMast">
+        
         @yield('header')
     </header>
-    @include('inc.messages')
-    <div class="container container-app" id="app">
 
+    <div class="container container-app" id="app">
         <div class="" id="myContent">
-            
             @yield('content')
         </div>
     </div>
 
     <script>
         $(document).ready(function () {
-            $('mytextarea').summernote()
+            $('textarea').summernote()
         })
-        
     </script>
 </body>
 </html>

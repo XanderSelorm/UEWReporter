@@ -10,8 +10,8 @@ class PagesController extends Controller
 {
     public function index(){
         if ( !is_null(Post::class) ) {    
-            $posts = Post::latest()->with('tags')->first() 
-            ->filter( request( ['month', 'year'] ) )
+            $posts = Post::latest()->with('categories')->first() 
+            ->filter( request( ['month', 'year'] ) )->orderBy('created_at', 'desc')
             ->paginate(5);
             return view('pages.index')->with(['posts' => $posts]);//, 'allPosts' => $allPosts]);
         }

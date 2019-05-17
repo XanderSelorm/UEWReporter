@@ -9,6 +9,7 @@
                <div class="site-heading">
                   <a class="h1">UEW<strong>Messenger</strong> <i class="fa fa-comment-alt"></i></a>
                   <span class="subheading">Access Announcements Anywhere, Anytime!</span>
+                  @include('inc.messages')
 
                   <div class="site-heading-buttons mt-4">
                      @guest
@@ -52,13 +53,13 @@
                                  <div class="col-md-8 col-sm-8">
                                     <h5 class="mt-0 mb-0"><a class="card-link" href="/posts/{{$post->id}}">{{$post->title}}</a></h5>
                                     <p class="card-text">
-                                          {{ substr(strip_tags($post->body), 0, 500) }}...
+                                          {{ substr(strip_tags($post->body), 0, 250) }}...
                                     </p>                                 
                                  </div>
                               </div>
                            </div>
                            <div class="card-footer">
-                              <a href="/posts/{{$post->id}}" class="btn btn-primary btn-block">Read</a>
+                              <a href="posts/{{$post->id}}" class="btn btn-primary btn-block">Read</a>
                            </div>
                         </div>
                      <!-- Post /////-->
