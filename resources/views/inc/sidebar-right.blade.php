@@ -16,7 +16,6 @@
                                 {{ $tag }}
                             </a>
                         </p>
-                    
                     @endforeach
 
                 <button class="btn btn-primary btn-sm my-3" data-toggle="modal" data-target="#discoverModal">Discover <i class="fa fa-lightbulb-o"></i></button>
@@ -61,11 +60,3 @@
     </footer>
 </div>
 <!--SIDEBAR END-->
-
-<script>
-$(document).ready(function() {
-    $("#btnDiscover").click(function() {
-       $("#discoverModal").modal({ backdrop : "static"}) ;
-    }); 
-});
-</script>

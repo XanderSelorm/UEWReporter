@@ -23,7 +23,7 @@
 
             <div class="form-group">
                 {{Form::label('body','Body')}}
-                {{Form::textarea('body','', ['id' => 'body-ckeditor', 'class' => 'form-control', 'placeholder' => 'Announcement Content...'])}}
+                {{Form::textarea('body','', ['id' => 'body', 'class' => 'form-control', 'placeholder' => 'Announcement Content...'])}}
             </div>
 
             <div class="row mx-4">

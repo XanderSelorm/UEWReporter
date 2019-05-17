@@ -47,8 +47,10 @@
     {{-- SCRIPTS --}}
     <script type="text/javascript">
         $(document).ready(function () {
-            $('textarea').summernote()
+            $('textarea').summernote();
+            // tinymce.init({ selector: 'textarea' });
         });
+        
     </script>
     @yield('scripts')
 </body>

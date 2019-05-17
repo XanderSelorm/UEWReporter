@@ -45,8 +45,9 @@
 
     <script>
         $(document).ready(function () {
-            $('textarea').summernote()
+            $('mytextarea').summernote()
         })
+        
     </script>
 </body>
 </html>

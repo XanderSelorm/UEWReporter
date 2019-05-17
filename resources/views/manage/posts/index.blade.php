@@ -49,10 +49,10 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><small>{{$post->created_at->toFormattedDateString()}}</small></td>
-                                        <td><small>{{$post->updated_at->toFormattedDateString()}}</small></td>
+                                        <td><small>{{ $post->created_at->toFormattedDateString() }}</small></td>
+                                        <td><small>{{ $post->updated_at->toFormattedDateString() }}</small></td>
                                         <td>
-                                            <a href="posts/{{$post->id}}" class="btn btn-primary btn-sm m-1" title="View Post"><i class="fa fa-eye"></i></a>
+                                            <a href="posts/{{$post->id}}" class="btn btn-primary btn-sm m-1" title="View Post"><i class="fa fa-file"></i></a>
 
                                             <a href="/manage/posts/{{$post->id}}/edit" class="btn btn-success btn-sm m-1" title="Edit Post"><i class="fa fa-edit"></i></a>
 

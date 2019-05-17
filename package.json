@@ -26,6 +26,7 @@
     "dependencies": {
         "codemirror": "^5.45.0",
         "font-awesome": "^4.7.0",
-        "summernote": "^0.8.11"
+        "summernote": "^0.8.11",
+        "tinymce": "^5.0.5"
     }
 }

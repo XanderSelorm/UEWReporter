@@ -35,6 +35,7 @@
             <label for="content">Content</label>
             <div class="mb-4" id="content">
                 <a href="/manage/posts{{--{{route('manage.posts')}}--}}" class="nav-link {{Nav::isResource('posts', 2)}} border"><i class="fa fa-bullhorn" id="icon"></i> Announcements</a>
+                <a href="/manage/categories{{--{{route('manage.posts')}}--}}" class="nav-link {{Nav::isResource('categories', 2)}} border"><i class="fa fa-folder" id="icon"></i> Categories</a>
             </div>
 
             <label for="administration">Administration</label>
