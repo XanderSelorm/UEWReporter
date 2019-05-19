@@ -9,7 +9,7 @@
                <div class="site-heading">
                   <a class="h1">Welcome Back!</a>
                   <span class="subheading">Sign In and get access to all the latest announcements!</span>
-                  ]@include('inc.messages')
+                  @include('inc.messages')
                </div>
             </div>
          </div>

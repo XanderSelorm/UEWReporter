@@ -73,7 +73,7 @@
                         <span class="row justify-content-center"> {{$posts->links()}} </span>
                     @else
                         <p>You have no posts</p>
-                        <small>Click on <strong><i class="fa fa-plus"></i> Publish</strong> on the navigation bar to create an Announcement.</small> 
+                        <small>Click on <strong><i class="fa fa-plus"></i> Publish</strong> to create an Announcement.</small> 
                     @endif
                 </div>
             </div>

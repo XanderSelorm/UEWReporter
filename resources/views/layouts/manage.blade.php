@@ -47,7 +47,9 @@
     {{-- SCRIPTS --}}
     <script type="text/javascript">
         $(document).ready(function () {
-            $('textarea').summernote();
+            $('textarea').summernote({
+                height:250,
+            });
             // tinymce.init({ selector: 'textarea' });
         });
         

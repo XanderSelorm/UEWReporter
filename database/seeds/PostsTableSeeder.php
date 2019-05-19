@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use DB;
 
 class PostsTableSeeder extends Seeder
 {
@@ -13,8 +12,10 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         DB::table('posts')->insert([
-            'title' => Str::random(10),
-            'body' => Str::random(10).'@gmail.com',
+            'title' => 'This is a Base Announcement',
+            'body' => 'Please feel free to delete this announcement and create a new one afterwards.',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'user_id' => 1,
             'cover_image' => 'noimage.jpg'
         ]);

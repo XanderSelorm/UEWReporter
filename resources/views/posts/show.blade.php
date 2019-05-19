@@ -52,7 +52,7 @@
         <hr>
         <small>
             <i class="fa fa-clock"></i> {{$post->created_at->toDayDateTimeString()}} &emsp; 
-            <i class="fa fa-user"></i> {{$post->user->name}} &emsp; <i class="fa fa-folder"></i> {{$post->category->name}}
+            <i class="fa fa-user"></i> {{$post->user->name}} &emsp; <i class="fa fa-folder"></i> {{$post->category}}
 
             <!--This is not functioning well-->
             {{-- @if ($post->tags != 0)

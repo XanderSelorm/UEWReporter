@@ -7,36 +7,72 @@
         <a class="text-secondaryr h3">Publish New Announcement</a>
     </div>
     
-    <div class="col-md-12 col-sm-12 mt-3">
-    <!--NEWS STRIP-->
+    
+        
+        <!--NEWS STRIP-->
         {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-            @csrf
-            <div class="form-group">
-                {{Form::label('title','Title')}}
-                {{Form::text('title','', ['class' => 'form-control', 'placeholder' => 'Announcement Title...'])}}
-            </div>
+            <div class="row">    
+                <div class="col-md-9 col-sm-12 mt-3">
+                    @csrf
+                    <div class="form-group">
+                        {{Form::label('title','Title')}}
+                        {{Form::text('title','', ['class' => 'form-control', 'placeholder' => 'Announcement Title...'])}}
+                    </div>
 
-            <div class="form-group">
-                <slug-widget url="{{url('/')}}" subdirectory="blog" :title="title" @copied="slugCopied" @slug-changed="updateSlug"></slug-widget>
-                <input type="hidden" v-model="slug" name="slug" />
-            </div>
+                    <div class="form-group">
+                        <slug-widget url="{{url('/')}}" subdirectory="blog" :title="title" @copied="slugCopied" @slug-changed="updateSlug"></slug-widget>
+                        <input type="hidden" v-model="slug" name="slug" />
+                    </div>
 
-            <div class="form-group">
-                {{Form::label('body','Body')}}
-                {{Form::textarea('body','', ['id' => 'body', 'class' => 'form-control', 'placeholder' => 'Announcement Content...'])}}
-            </div>
+                    <div class="form-group">
+                        {{Form::label('body','Body')}}
+                        {{Form::textarea('body','', ['id' => 'body', 'class' => 'form-control', 'placeholder' => 'Announcement Content...'])}}
+                    </div>
 
-            <div class="row mx-4">
-                <div class=" col-md-6 form-group">
-                    {{Form::label('cover_image','Add Featured Image')}} <br>
-                    {{Form::file('cover_image')}}
+                    <div class="row mx-4">
+                        <div class=" col-md-6 form-group">
+                            {{Form::label('cover_image','Add Featured Image')}} <br>
+                            {{Form::file('cover_image')}}
 
+                        </div>
+                        
+                    </div>
                 </div>
-                <div class="col-md-6 mt-4">
-                    <button type="submit" class="btn btn-primary pull-right">Publish <i class="fa fa-upload"></i></button>
+                <div class="col-md-3 card mt-4">
+                    <div class="row my-4">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary pull-right col-md-12">Publish <i class="fa fa-upload"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selCategory">Select Category</label>
+                        <select class="form-control" id="selCategory">
+                            <option>General Announcement</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Add Tags <span class="fa fa-caret-down"></span></button>
+
+                    <div id="sidebar-archive" class="collapse in">
+                        {{-- @foreach ($tags as $tag)
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" v-model="tagSelected" :value="{{$tag->id}}">{{$tag->name}}
+                            </label>
+                        </div>
+                        @endforeach --}}
+                    </div>
+                    
                 </div>
             </div>
         {!! Form::close() !!}
-    </div>
+        
+    
+    
+    
 </div>
 @stop

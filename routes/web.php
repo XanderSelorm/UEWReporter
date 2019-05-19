@@ -28,8 +28,10 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
     Route::resource('/users', 'UsersController');
     Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
     Route::resource('/roles', 'RolesController', ['except' => 'destroy']);
+    Route::resource('/categories', 'CategoriesController');
 });
 
+Route::get('/home', 'PagesController@index');
 Route::get('/', 'PagesController@index');
 Route::get('/notifications', 'PagesController@notifications');
 Route::get('/register', 'PagesController@registration');

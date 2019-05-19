@@ -14,17 +14,16 @@ class CreateTagsTable extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name')->unique();
-            $table->string('password');
             $table->timestamps();
         });
 
-        Schema::create('post_tag', function (Blueprint $table) {
-            $table->integer('post_id');
-            $table->integer('tag_id');
-            $table->primary(['post_id', 'tag_id']);
-        });
+        // Schema::create('post_tag', function (Blueprint $table) {
+        //     $table->integer('post_id');
+        //     $table->integer('tag_id');
+        //     $table->primary(['post_id', 'tag_id']);
+        // });
     }
 
     /**

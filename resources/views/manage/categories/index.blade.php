@@ -31,16 +31,16 @@
                                 <tr>
                                     <td>{{$category->display_name}}</td>
                                     <td>{{$category->name}}</a></td>
-                                    <td>{{$category->description}}</td>
+                                    <td> {{ substr(strip_tags($category->description), 0, 50)}}...</td>
                                     <td>
-                                        <a href="permissions/{{$category->id}}" class="btn btn-primary btn-sm"><i class="fa fa-file"></i> View</a>
-                                        <a href="permissions/{{$category->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="categories/{{$category->id}}" class="btn btn-primary btn-sm"><i class="fa fa-file"></i></a>
+                                        <a href="categories/{{$category->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
 
-                                        {{-- {!!Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                        {!!Form::open(['action' => ['CategoriesController@destroy', $category->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                                             {{Form::hidden('_method', 'DELETE')}}
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Category? This action cannot be reversed!')"><i class="fa fa-trash"></i></button>
                                             <!--{{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}-->
-                                        {!!Form::close()!!} --}}
+                                        {!!Form::close()!!}
                                     </td>
                                 </tr>
                             @endforeach
