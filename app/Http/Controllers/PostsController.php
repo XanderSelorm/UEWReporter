@@ -111,7 +111,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('id', $id)->with('tags')->first();
+        $post = Post::where('id', $id)->with(['tag', 'category'])->first();
+        //$post = Post::where('id', $id)->with('tags')->first();
         // dd($post);
         return view('manage.posts.show')->with('post', $post);
     }

@@ -22,14 +22,13 @@
         <small>
             <i class="fa fa-clock"></i> {{$post->created_at->toDayDateTimeString()}} &emsp; 
             <i class="fa fa-user"></i> {{$post->user->name}} &emsp; 
-
-            <!--This is not functioning well-->
-            {{-- @if (!empty($post->tags))
-                @foreach( $post->tags as $tag )
-                    <a href="/posts/tags/{{ $tag }}" class="text-dark"><i class="fa fa-list-ul"></i> {{ $post->title }}</a>
-                    @break
-                @endforeach
-            @endif    --}}
+            <i class="fa fa-folder-open"></i> {{$post->category->display_name}}
+            <hr>
+            @if (!empty($post->tag))
+            @foreach( $post->tag as $tag )
+                <span class="badge bg-info m-0 p-2"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag->id }}" class="text-dark">{{ $tag->name }} </a></span>
+            @endforeach  
+            @endif
             <!---->
 
         </small>

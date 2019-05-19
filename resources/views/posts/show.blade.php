@@ -63,12 +63,12 @@
                 @endforeach
             @endif    --}}
                 <hr>
-            @if (!empty($post->tags))
-            @foreach( $post->tags as $tag )
-                <small class="badge"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag }}" class="text-dark">{{ $tag->name }}, </a></small>
+            @if (!empty($post->tag))
+            @foreach( $post->tag as $tag )
+                <span class="badge bg-info m-0 p-2"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag->id }}" class="text-dark">{{ $tag->name }} </a></span>
             @endforeach  
             @endif
-            {{dd($post->tag->name)}}
+            {{-- {{dd($post->tag)}} --}}
             <!---->
 
         </small>

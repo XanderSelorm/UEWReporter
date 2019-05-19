@@ -9,11 +9,11 @@
         </div>
         <div id="sidebar" class="collapse-sm">
             <div class="list-group list-group-flush">
-                    @foreach($tags as $tag)
+                    @foreach($categories as $category)
             
                         <p class="ml-5">
-                            <a href="/posts/tags/{{$tag}}">
-                                {{ $tag }}
+                            <a href="/posts/categories/{{$category}}">
+                                {{ $category }}
                             </a>
                         </p>
                     @endforeach
