@@ -13,9 +13,9 @@ class AddCategoryIdToPosts extends Migration
      */
     public function up()
     {
-        // Schema::table('posts', function (Blueprint $table) {
-        //     $table->integer('category_id')->unsigned()->nullable();
-        // });
+        Schema::table('posts', function (Blueprint $table) {
+            $table->integer('category_id')->unsigned()->nullable();
+        });
     }
 
     /**

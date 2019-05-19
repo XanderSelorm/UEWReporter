@@ -24,12 +24,12 @@
             <i class="fa fa-user"></i> {{$post->user->name}} &emsp; 
 
             <!--This is not functioning well-->
-            @if (!empty($post->tags))
+            {{-- @if (!empty($post->tags))
                 @foreach( $post->tags as $tag )
                     <a href="/posts/tags/{{ $tag }}" class="text-dark"><i class="fa fa-list-ul"></i> {{ $post->title }}</a>
                     @break
                 @endforeach
-            @endif   
+            @endif    --}}
             <!---->
 
         </small>

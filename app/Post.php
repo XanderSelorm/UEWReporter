@@ -37,11 +37,11 @@ class Post extends Model
     }
 
 
-    public function tags(){
-        return $this->hasMany('App\Tag');
+    public function tag(){
+        return $this->hasMany('App\Tag', 'id');
     }
 
-    public function categories() {
+    public function category() {
         return $this->belongsTo('App\Category');
     }
 }

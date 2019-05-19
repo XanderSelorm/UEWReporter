@@ -52,7 +52,8 @@
         <hr>
         <small>
             <i class="fa fa-clock"></i> {{$post->created_at->toDayDateTimeString()}} &emsp; 
-            <i class="fa fa-user"></i> {{$post->user->name}} &emsp; <i class="fa fa-folder"></i> {{$post->category}}
+            <i class="fa fa-user"></i> {{$post->user->name}} &emsp; 
+            <i class="fa fa-folder-open"></i> {{$post->category->display_name}}
 
             <!--This is not functioning well-->
             {{-- @if ($post->tags != 0)
@@ -64,9 +65,10 @@
                 <hr>
             @if (!empty($post->tags))
             @foreach( $post->tags as $tag )
-                <small><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag }}" class="text-dark">{{ $tag->name }}, </a></small>
+                <small class="badge"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag }}" class="text-dark">{{ $tag->name }}, </a></small>
             @endforeach  
             @endif
+            {{dd($post->tag->name)}}
             <!---->
 
         </small>

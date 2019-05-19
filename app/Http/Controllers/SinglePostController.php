@@ -46,7 +46,7 @@ class SinglePostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('id', $id)->with('tags')->first();
+        $post = Post::where('id', $id)->with(['tag', 'category'])->first(); //dd($post);
         return view('posts.show')->with('post', $post);
     }
 

@@ -8,7 +8,7 @@ class Tag extends Model
 {
     protected $table = 'tags';
 
-    public function posts(){
+    public function post(){
         return $this->belongsToMany('App\Post');
     }
 
