@@ -20,6 +20,7 @@ Route::get('/users/{id}/{name}', function ($id, $name){
 });
 */
 
+//Backend Admin Manage Pages
 Route::prefix('manage')->middleware('role:superadministrator|administrator|editor|author|contributor')->group( function(){
     Route::get('/', 'ManageController@index');
     Route::get('/dashboard', 'DashboardController@index')->name('manage.dashboard');
@@ -31,21 +32,20 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
     Route::resource('/categories', 'CategoriesController');
 });
 
+//Frontend User Pages
 Route::get('/home', 'PagesController@index');
 Route::get('/', 'PagesController@index');
 Route::get('/notifications', 'PagesController@notifications');
 Route::get('/register', 'PagesController@registration');
 Route::get('/login', 'PagesController@login');
 Route::get('/profile', 'PagesController@profile');
-//Route::get('/content', 'PagesController@myContent');
-
 Route::resource('/posts', 'SinglePostController');
-//Route::get('/posts/index', 'PostsController@index')->name('posts.index');
-//Route::get('/posts/{$post->id}', 'PostsController@show');
 
+//Collections
 Route::get('/posts/tags/{tag}', 'TagsController@index');
+Route::get('/posts/categories/{name}', 'CategoriesController@list');
 
-
+//Create Permission Pages
 Route::get('/partials/basicPermission', 'PagesController@basicPermission');
 Route::get('/partials/crudPermission', 'PagesController@crudPermission');
 
@@ -53,5 +53,3 @@ Route::get('/partials/crudPermission', 'PagesController@crudPermission');
 
 
 Auth::routes();
-
-//Route::get('/dashboard', 'DashboardController@index');

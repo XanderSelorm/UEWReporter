@@ -26,7 +26,7 @@
             <hr>
             @if (!empty($post->tag))
             @foreach( $post->tag as $tag )
-                <span class="badge bg-info m-0 p-2"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag->id }}" class="text-dark">{{ $tag->name }} </a></span>
+                <span class="badge bg-info m-0 p-2"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag->name }}" class="text-dark">{{ $tag->name }} </a></span>
             @endforeach  
             @endif
             <!---->

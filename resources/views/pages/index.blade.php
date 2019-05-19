@@ -51,7 +51,7 @@
                                     <img style="width: 100%;" class="mr-3  img-thumbnail" src="/storage/cover_images/{{$post->cover_image}}" alt="featured image">
                                  </div>
                                  <div class="col-md-8 col-sm-8">
-                                    <h5 class="mt-0 mb-0"><a class="card-link" href="/posts/{{$post->id}}">{{$post->title}}</a></h5>
+                                    <h5 class="mt-0 mb-0"><a class="card-link" href="{{ route('posts.show', $post->id) }}">{{$post->title}}</a></h5>
                                     <p class="card-text">
                                           {{ substr(strip_tags($post->body), 0, 250) }}...
                                     </p>                                 
@@ -59,7 +59,7 @@
                               </div>
                            </div>
                            <div class="card-footer">
-                              <a href="posts/{{$post->id}}" class="btn btn-primary btn-block">Read</a>
+                              <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary btn-block">Read</a>
                            </div>
                         </div>
                      <!-- Post /////-->

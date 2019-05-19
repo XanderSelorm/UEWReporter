@@ -8,6 +8,11 @@ use Hash;
 
 class CategoriesController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +22,12 @@ class CategoriesController extends Controller
     {
         $categories = Category::paginate(10);//all();
         return view('manage.categories.index')->withCategories($categories);
+    }
+
+    public function list(Category $category) {
+        $posts =$category->post()->paginate(5);
+        dd($posts);
+        return view('pages.index', compact('posts'));
     }
 
     /**

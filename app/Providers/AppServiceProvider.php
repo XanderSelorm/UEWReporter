@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['inc.sidebar-right', 'posts.show'], function ($view) {
 
             $archives = \App\Post::archives();
-            $categories = \App\Category::pluck('display_name');
+            $categories = \App\Category::all();
 
             $view->with(compact('archives', 'categories'));
             //$view->with('tags', \App\Tag::has('posts')->pluck('name'));

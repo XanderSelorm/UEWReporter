@@ -57,7 +57,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('manage.posts.create');
+        $tags = Tag::all();
+        return view('manage.posts.create')->withTags($tags);
     }
 
     /**

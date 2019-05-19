@@ -45,6 +45,8 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="tags" :value="tagSelected">
+
                     <div class="form-group">
                         <label for="selCategory">Select Category</label>
                         <select class="form-control" id="selCategory">
@@ -58,21 +60,34 @@
                     <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Add Tags <span class="fa fa-caret-down"></span></button>
 
                     <div id="sidebar-archive" class="collapse in">
-                        {{-- @foreach ($tags as $tag)
+                        @foreach ($tags as $tag)
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" v-model="tagSelected" :value="{{$tag->id}}">{{$tag->name}}
                             </label>
+                            <label class="label">
+                                Add new Tag
+                                <input type="text" class="form-input" v-model="tagSelected" :value="{{$tag->id}}">
+                            </label>
                         </div>
-                        @endforeach --}}
+                        @endforeach
                     </div>
                     
                 </div>
             </div>
         {!! Form::close() !!}
-        
-    
-    
-    
 </div>
 @stop
+
+@section('scripts')
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+        tagSelected: []
+        }
+    });
+    
+</script>
+@endsection
