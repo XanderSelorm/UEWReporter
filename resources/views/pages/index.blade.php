@@ -40,7 +40,11 @@
                                  <div class="d-flex">
                                        <div class="ml-2">
                                           <div class="h5 m-0 text-muted"><i class="fa fa-user"></i> {{$post->user->name}}</div>
-                                          <small class="h7 text-muted"><i class="fa fa-clock"></i> {{$post->created_at->diffForHumans()}} &emsp; <i class="fa fa-folder"></i> {{ $post->category->display_name }}</small> 
+                                          <small class="h7 text-muted">
+                                             <i class="fa fa-clock"></i> {{$post->created_at->diffForHumans()}} &emsp; 
+                                             <i class="fa fa-folder-open"></i> {{ $post->category->display_name }}
+                                          </small> 
+                                          {{-- {{ dd($post->category) }} --}}
                                        </div>
                                  </div>
                               </div>

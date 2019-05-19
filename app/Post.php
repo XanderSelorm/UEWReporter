@@ -14,10 +14,6 @@ class Post extends Model
     //Timestamps
     public $timestamps = true;
 
-    public function user(){
-        return $this->belongsTo('App\User');
-    }
-
     public function scopeFilter($query, $filters){
         if (isset($filters['month'])){
             $query->whereMonth('created_at', Carbon::parse($filters['month'])->month);
@@ -37,11 +33,17 @@ class Post extends Model
     }
 
 
+    //Model Relationships
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     public function tag(){
         return $this->hasMany('App\Tag', 'id');
     }
 
     public function category() {
-        return $this->hasOne('App\Category','id');
+        return $this->belongsTo('App\Category','id');
     }
 }

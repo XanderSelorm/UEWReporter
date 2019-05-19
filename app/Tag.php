@@ -8,6 +8,9 @@ class Tag extends Model
 {
     protected $table = 'tags';
 
+
+    //Model Relationships
+
     public function post(){
         return $this->belongsToMany('App\Post');
     }

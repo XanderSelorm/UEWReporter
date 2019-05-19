@@ -8,11 +8,13 @@ use Carbon\Carbon;
 
 class PagesController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         if ( !is_null(Post::class) ) {    
             $posts = Post::latest()->with('category')->first() 
             ->filter( request( ['month', 'year'] ) )->orderBy('created_at', 'desc')
             ->paginate(5);
+
             return view('pages.index')->with(['posts' => $posts]);//, 'allPosts' => $allPosts]);
         }
         else {
