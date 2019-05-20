@@ -17,6 +17,7 @@ class PostsTableSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'user_id' => 1,
+            'category_id' => 1,
             'cover_image' => 'noimage.jpg'
         ]);
     }

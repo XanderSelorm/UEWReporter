@@ -9,6 +9,10 @@ class Post extends Model
 {
     //Table Name
     protected $table = 'posts';
+
+    // Setup fields of table "posts"
+    protected $fillable = ['id', 'title', 'slug', 'body', 'cover_image', 'user_id', 'category_id'];
+
     //Primary Key
     public $primaryKey = 'id';
     //Timestamps
@@ -40,10 +44,10 @@ class Post extends Model
     }
 
     public function tag(){
-        return $this->hasMany('App\Tag', 'id');
+        return $this->belongsToMany('App\Tag', 'id');
     }
 
     public function category() {
-        return $this->belongsTo('App\Category','id');
+        return $this->belongsTo('App\Category', 'category_id');
     }
 }

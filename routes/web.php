@@ -43,7 +43,7 @@ Route::resource('/posts', 'SinglePostController');
 
 //Collections
 Route::get('/posts/tags/{tag}', 'TagsController@index');
-Route::get('/posts/categories/{name}', 'CategoriesController@list');
+Route::get('/posts/categories/{name}', 'CollectionsController@categoryPosts');
 
 //Create Permission Pages
 Route::get('/partials/basicPermission', 'PagesController@basicPermission');

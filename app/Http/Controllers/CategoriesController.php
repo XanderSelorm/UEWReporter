@@ -24,12 +24,6 @@ class CategoriesController extends Controller
         return view('manage.categories.index')->withCategories($categories);
     }
 
-    public function list(Category $category) 
-    {
-        $posts = $category->post()->paginate(5);
-        return view('pages.index', compact('posts'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *

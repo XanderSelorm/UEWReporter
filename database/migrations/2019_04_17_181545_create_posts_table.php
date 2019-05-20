@@ -21,6 +21,11 @@ class CreatePostsTable extends Migration
             $table->string('cover_image')->default('noimage.jpg')->nullable();
             $table->integer('user_id');
             $table->timestamps();
+            $table->integer('category_id')->unsigned()->nullable();
+
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
         });
     }
 

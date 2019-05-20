@@ -21,6 +21,10 @@ class CreateCategoriesTable extends Migration
             $table->string('password')->nullable();
             $table->timestamps();
         });
+
+        // Schema::table('posts', function (Blueprint $table) {
+        //     $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+        // });
     }
 
     /**

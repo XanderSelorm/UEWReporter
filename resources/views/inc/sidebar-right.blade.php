@@ -12,7 +12,7 @@
                         @foreach($categories as $category)
                 
                             <p class="text-center">
-                                <a href="/posts/categories/{{$category->name}}">
+                                <a href="/posts/categories/{{$category->id}}">
                                     {{ $category->display_name }}
                                 </a>
                             </p>
