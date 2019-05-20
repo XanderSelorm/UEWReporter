@@ -101,6 +101,10 @@ class PostsController extends Controller
         $post->cover_image = $filenameToStore;
         $post->save();
 
+        if ($request->tags) {
+            $post->syncTags(explode(',', $request->tags));
+        }
+
         return redirect('/manage/posts')->with('success', 'Post Created Successfully');
     }
 
@@ -126,15 +130,14 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::where('id', $id)->with('tag')->first();
+        $tags = Tag::all();
 
         //Check for correct User
         if(auth()->user()->id !== $post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
-
-
-        return view('manage.posts.edit')->with('post', $post);
+        return view('manage.posts.edit')->withPost($post)->withTags($tags);
     }
 
     /**
@@ -174,6 +177,10 @@ class PostsController extends Controller
             $post->cover_image = $filenameToStore;
         }
         $post->save();
+
+        if ($request->tags) {
+            $post->syncTags(explode(',', $request->tags));
+        }
 
         return redirect('/manage/posts')->with('success', 'Post Updated Successfully');
     }

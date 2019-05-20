@@ -38,6 +38,7 @@
                         
                     </div>
                 </div>
+
                 <div class="col-md-3 card mt-4">
                     <div class="row my-4">
                         <div class="col-md-12">
@@ -65,12 +66,14 @@
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" v-model="tagSelected" :value="{{$tag->id}}">{{$tag->name}}
                             </label>
-                            <label class="label">
-                                Add new Tag
-                                <input type="text" class="form-input" v-model="tagSelected" :value="{{$tag->id}}">
-                            </label>
                         </div>
                         @endforeach
+
+                        
+                        <label class="label mt-3">
+                            Add new Tag
+                            <input type="text" class="form-input" v-model="tagSelected" :value="{{$tag->id}}">
+                        </label>
                     </div>
                     
                 </div>
