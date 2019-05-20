@@ -20,7 +20,8 @@
         <hr>
         <h1>{{$post->title}}</h1>
         <small>
-            <i class="fa fa-clock"></i> {{$post->created_at->toDayDateTimeString()}} &emsp; 
+            <i class="fa fa-clock"></i> {{$post->created_at->toDayDateTimeString()}} &emsp;
+            <i class="fa fa-reset"></i> {{$post->updated_at->toDayDateTimeString()}} &emsp;  
             <i class="fa fa-user"></i> {{$post->user->name}} &emsp; 
             <i class="fa fa-folder-open"></i> {{$post->category->display_name}}
             <hr>
