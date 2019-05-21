@@ -38,8 +38,9 @@ Route::get('/', 'PagesController@index');
 Route::get('/notifications', 'PagesController@notifications');
 Route::get('/register', 'PagesController@registration');
 Route::get('/login', 'PagesController@login');
-Route::get('/profile/{id}', 'PagesController@showProfile')->name('profile');
-Route::get('/profile/{id}/update', 'PagesController@updateProfile')->name('profile.update');
+Route::resource('/profile', 'ProfilesController');
+// Route::get('/profile/{id}', 'ProfilesController@show')->name('profile');
+// Route::get('/profile/{id}/update', 'ProfilesController@update')->name('profile.update');
 Route::resource('/posts', 'SinglePostController');
 
 //Collections

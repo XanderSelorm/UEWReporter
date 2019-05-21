@@ -11,14 +11,14 @@
             <div class="card-body">
                 <div class="">
                     <div class="container">
-                        <form method="POST" action="{{ route('users.update', $user->id) }}" class="row">
+                        <form method="POST" action="{{ route('users.update', $user->id) }}" class="row" enctype="multipart/form-data">
                             {{method_field('PUT')}}
                             @csrf
         
                             
                             <div class="col-md-3">
                                 <div class="form-group profile-img">
-                                    <img src="/storage/profile_images/avatar.png" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
+                                    <img src="/storage/profile_pictures/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Picture"/>
                                     <span class="file btn btn-lg btn-primary">
                                         <input type="file" class="text-center center-block file-upload" id="inputFile" name="profile_picture">  
                                         Change Photo

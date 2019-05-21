@@ -10,7 +10,7 @@
             </div>
 
             <div class="card-body mx-5">
-                <form method="POST" action="{{ route('users.store') }}" class="row">
+                <form method="POST" action="{{ route('users.store') }}" class="row" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-3">
                         <div class="form-group profile-img">

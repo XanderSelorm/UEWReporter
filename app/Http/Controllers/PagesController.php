@@ -49,31 +49,49 @@ class PagesController extends Controller
         // return view('pages.profile')->withUser($user)->withRoles($roles);
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request, $id){
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
             'phone' => ['sometimes', 'digits:10'],
             'password' => ['confirmed'],
+            'profile_picture' => 'image|nullable|max:1999'
         ]);
+
+        $filenameToStore = "";
+        //Handle FIle Upload
+        if($request->hasFile('profile_picture')){
+            //Get FIlename with the extension
+            $filenameWithExt = $request->file('profile_picture')->getClientOriginalName();
+            //Get just Filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //Get just Ext
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+            //Filename to Store
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            //Upload Image
+            $path = $request->file('profile_picture')->storeAs('public/profile_pictures', $filenameToStore);
+        }
+        else {
+            $filenameToStore = "avatar.png";
+        }
+
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->profile_picture = $filenameToStore;
         
         if (!empty($request->password)) {
             $password = trim($request->password);
             $user->password = Hash::make($password);
         } 
         
-        $user->save();
-        
-        
-        if ($user->syncRoles(explode(',', $request->roles))) {
-        return redirect()->route('users.show', $id)->with('success', 'User Details Updated Successfully');
+        if ($user->save()) {
+        return redirect()->route('profile', $id)->with('success', 'Profile Updated Successfully');
         } 
         else {
-            return redirect()->route('manage.users.edit', $user)->with('danger', 'Sorry, a problem occured while updating the User Details');
+            return redirect()->route('profile', $id)->with('danger', 'Sorry, a problem occured while updating your profile');
         } 
     }
 

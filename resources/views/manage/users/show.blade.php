@@ -23,7 +23,7 @@
             <form class="row">
                 <div class="col-md-3">
                     <div class="form-group profile-img">
-                        <img src="/storage/profile_images/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
+                        <img src="/storage/profile_pictures/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
                     </div>
                 </div>
                 <div class="col-md-5">

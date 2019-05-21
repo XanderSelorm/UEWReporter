@@ -35,17 +35,17 @@
   <hr>
   <div class="row">
     <div class="col-md-12">
-        <form method="POST" id="profileForm" action="{{ route('profile.update', $user->id) }}" class="row">
+        <form method="POST" id="profileForm" action="{{ route('profile.update', $user->id) }}" class="row" enctype="multipart/form-data"> 
           {{method_field('PUT')}}
           @csrf
 
           <div class="col-md-3">
-              <div class="profile-img">
-                <img src="/storage/profile_images/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
-                <span class="file btn btn-lg btn-primary">
-                    <input type="file" class="text-center center-block file-upload" id="inputFile">  
-                  Change Photo
-                </span>
+              <div class="form-group profile-img">
+                  <img src="/storage/profile_pictures/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Picture"/>
+                  <span class="file btn btn-lg btn-primary">
+                      <input type="file" class="text-center center-block file-upload" id="inputFile" name="profile_picture">  
+                      Change Photo
+                  </span>
               </div>
           </div>
 
