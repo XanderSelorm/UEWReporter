@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Carbon\Carbon;
 use App\Role;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -33,19 +34,32 @@ class PagesController extends Controller
 
     public function showProfile($id){
         $roles = Role::all();
-        $user = User::where('id', $id)->with('roles')->first();
-        return view('pages.profile')->withUser($user)->withRoles($roles);;
+        $user = null;
+
+        if($id != null) {
+            $user = User::find($id);
+        } else {
+            $user = User::find(Auth::user()->id)->with('roles')->first();
+        }
+        return view('pages.profile')->withUser($user)->withRoles($roles);
+
+        // $id = User::get('id');
+        // $roles = Role::all();
+        // $user = User::find($id)->with('roles')->first();
+        // return view('pages.profile')->withUser($user)->withRoles($roles);
     }
 
     public function updateProfile(Request $request){
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
+            'phone' => ['sometimes', 'digits:10'],
             'password' => ['confirmed'],
         ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         
         if (!empty($request->password)) {
             $password = trim($request->password);

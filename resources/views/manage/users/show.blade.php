@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container col">
-    <div class="col-md-12 ml-auto mr-auto">
+    <div class="col-md-12 mx-auto mt-3">
         <div class="row">
             <div class="mr-auto ml-3">
                     <a href="{{ URL::previous() }}"class="btn btn-primary btn-sm"><i class="fa fa-caret-left"></i> Go Back</a>
@@ -20,27 +20,40 @@
         <hr>
 
         <div>
-            <form>
-                <div class="form-group">
-                    <label for="name"><strong>Username:</strong></label><br>
-                    <p class="ml-3">{{$user->name}}</p>
+            <form class="row">
+                <div class="col-md-3">
+                    <div class="form-group profile-img">
+                        <img src="/storage/profile_images/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email"><strong>Email:</strong></label><br>
-                    <p class="ml-3">{{$user->email}}</p>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="name"><strong>Username:</strong></label><br>
+                        <p class="ml-3">{{$user->name}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><strong>Email:</strong></label><br>
+                        <p class="ml-3">{{$user->email}}</p>
+                    </div>
+                    <div class="form-group">
+                            <label for="phone"><strong>Phone:</strong></label><br>
+                            <p class="ml-3">{{$user->phone}}</p>
+                        </div>
+                    <div class="form-group">
+                        <label for="created_at"><strong>Date Joined:</strong></label><br>
+                        <p class="ml-3">{{$user->created_at->toFormattedDateString()}}</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email"><strong>Date Joined:</strong></label><br>
-                    <p class="ml-3">{{$user->created_at->toFormattedDateString()}}</p>
-                </div>
-                <div class="form-group">
-                    <label for="email"><strong>Roles:</strong></label><br>
-                    <ul>
-                        {{ $user->roles->count() == 0 ? 'This user has not been assigned any roles yet' : '' }}
-                        @foreach ($user->roles as $role)
-                            <li>{{$role->display_name}}  <em> ({{$role->description}})</em></li>
-                        @endforeach
-                    </ul>                
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="role"><strong>Roles:</strong></label><br>
+                        <ul>
+                            {{ $user->roles->count() == 0 ? 'This user has not been assigned any roles yet' : '' }}
+                            @foreach ($user->roles as $role)
+                                <li id="role">{{$role->display_name}}  <em> ({{$role->description}})</em></li>
+                            @endforeach
+                        </ul>                
+                    </div>
                 </div>
             </form>
         </div>

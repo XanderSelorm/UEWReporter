@@ -29,39 +29,22 @@
 
 <div class="container card p-5">
   <div class="row">
-      <button class="btn btn-primary ml-auto" id="btnEdit"><i class="fa fa-edit"></i> Edit</button>
+    <a class=""></a>
+    <a class="btn btn-primary text-light ml-auto" id="btnEdit"><i class="fa fa-edit"></i> Edit</a>
   </div>
   <hr>
   <div class="row">
-    {{-- <div class="col-sm-3"><!--left col-->
-      <div class="profile-img">
-          <img src="/storage/profile_images/avatar.png" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
-          <div class="file btn btn-lg btn-primary">
-              Change Photo
-              <input type="file" name="file" id="inputFile">
-              <input type="file" class="text-center center-block file-upload" id="inputFile">
-          </div>
-      </div>
-        {{-- <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-
-          <input type="file" class="text-center center-block file-upload" id="inputFile">
-        </div> --}
-    </div> --}}
-    <!--/col-3-->
-
     <div class="col-md-12">
-        <form method="POST" action="{{ route('users.update', $user->id) }}" class="row">
+        <form method="POST" id="profileForm" action="{{ route('profile.update', $user->id) }}" class="row">
           {{method_field('PUT')}}
           @csrf
 
           <div class="col-md-3">
               <div class="profile-img">
-                <img src="/storage/profile_images/avatar.png" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
+                <img src="/storage/profile_images/{{$user->profile_picture}}" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
                 <span class="file btn btn-lg btn-primary">
                     <input type="file" class="text-center center-block file-upload" id="inputFile">  
                   Change Photo
-                    {{-- <input type="file" name="file" id="inputFile"> --}}
                 </span>
               </div>
           </div>
@@ -70,39 +53,48 @@
             <div class="row">
               <div class="form-group col-md-6">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" name="name" id="username" placeholder="Username" disabled>
+                  <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}" placeholder="Username">
               </div>
 
               <div class="form-group col-md-6">
                   <label for="mobile">Mobile</label>
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any." disabled>
+                  <input type="text" class="form-control" name="mobile" id="mobile" value="{{$user->phone}}" placeholder="enter mobile number" title="enter your mobile number if any.">
               </div>
             </div>  
           
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." disabled>
+              <input type="email" class="form-control" name="email" id="email" value="{{$user->email}}" placeholder="you@email.com" title="enter your email.">
             </div>
 
             <div class="row">
 
               <div class="form-group col-md-6">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="new password" title="enter your password." disabled>
+                <input type="password" class="form-control" name="password" id="password" placeholder="new password" title="enter your password.">
               </div>
 
               <div class="form-group col-md-6">
                 <label for="password2">Verify Password</label>
-                <input type="password" class="form-control" name="password2" id="password2" placeholder="verify password" title="confirm your password." disabled>
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="verify password" title="confirm your password.">
               </div>
 
+              <div class="form-group">
+                  <label for="role"><strong>Roles:</strong></label><br>
+                  <ul>
+                      {{ $user->roles->count() == 0 ? 'This user has not been assigned any roles yet' : '' }}
+                      @foreach ($user->roles as $role)
+                          <li id="role">{{$role->display_name}}  <em> ({{$role->description}})</em></li>
+                      @endforeach
+                  </ul>                
+              </div>
             </div>
             
             <hr>
 
             <div class="pull-right">
-              <button class="btn btn-default border" type="reset" id="btnReset"><i class="fa fa-repeat"></i> Reset</button>
-              <button class="btn btn-success" type="submit" id="btnSave"><i class="fa fa-save"></i> Save</button>
+              <button class="btn btn-default border" type="reset" id="btnReset"><i class="fa fa-repeat"></i> Reset Changes</button>
+              <button class="btn btn-success" type="submit" id="btnSave"><i class="fa fa-save"></i> Save Changes</button>
             </div>
           </div>
 
@@ -155,12 +147,15 @@
 </div> --}}
 
 
+ 
+
+@stop
+
+@section('scripts')
 <script>
 $(document).ready(function() { 
 
-  $('#btnReset').hide();
-  $('#btnSave').hide();
-
+//getting and displaying image
   var readURL = function(input) {
       if (input.files && input.files[0]) {
           var reader = new FileReader();
@@ -176,29 +171,50 @@ $(document).ready(function() {
   $(".file-upload").on('change', function(){
       readURL(this);
   });
+//end
 
-  var el  = document.getElementById('btnEdit');
-  var frm = document.getElementById('profileForm');
 
-  for(var i=0; i < frm.length; i++) {
-          frm.elements[i].disabled = true;
-      } 
+// var el  = document.getElementById('btnEdit');
+//   var frm = document.getElementById('profileForm');
 
-  el.addEventListener('click', function(){
-      for(var i=0; i < frm.length; i++) {
-          frm.elements[i].disabled = false;
-      } 
-      frm.elements[0].focus();
+//   for(var i=0; i < frm.length; i++) {
+//           frm.elements[i].disabled = true;
+//       } 
+
+//   el.addEventListener('click', function(){
+//       for(var i=0; i < frm.length; i++) {
+//           frm.elements[i].disabled = false;
+//       } 
+//       frm.elements[0].focus();
+
+//       $('#btnReset').show();
+//       $('#btnSave').show();
+//   });
+
+//Edit Details
+  $('#btnReset').hide();
+  $('#btnSave').hide();
+  $('.file').hide();
+  $('#profileForm :input').prop("disabled", true);
+
+  var el  = $('a#btnEdit');
+  var frm = $('form#profileForm');
+
+  // for(var i=0; i < frm.elements[i]; i++) {
+  //         frm.elements[i].disabled = true;
+  //     } 
+
+  el.on('click', function(){
+      
+    $('#profileForm :input').prop("disabled", false);
+      
 
       $('#btnReset').show();
       $('#btnSave').show();
+    $('.file').show();
   });
+//End
 
 });
-</script> 
-
-@stop
-
-@section('scripts')
-   
+</script>
 @endsection

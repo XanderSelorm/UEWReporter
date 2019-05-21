@@ -43,6 +43,7 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
+            'phone' => ['sometimes', 'digits:10'],
             'password' => ['required', 'confirmed'],
             'profile_picture' => 'image|nullable|max:1999'
         ]);
@@ -68,6 +69,7 @@ class UsersController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->password = Hash::make($request->password);
         $user->profile_picture = $filenameToStore;
         $user->save();
@@ -118,6 +120,7 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
+            'phone' => ['sometimes', 'digits:10'],
             'password' => ['confirmed'],
             'profile_picture' => 'image|nullable|max:1999'
         ]);
@@ -143,6 +146,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->profile_picture = $filenameToStore;
         
         if (!empty($request->password)) {

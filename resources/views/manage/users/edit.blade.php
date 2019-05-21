@@ -36,6 +36,11 @@
                                     <label for="email">Email</label>
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="phone">phone</label>
+                                    <input id="phone" type="tel" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $user->phone }}">
+                                </div>
                                 
                                 <div class="form group">                                    
                                     <div class="form-check-inline ">
@@ -73,7 +78,7 @@
                             </div>
                             <hr>
                             <div class="form-group mx-auto">
-                                <button type="submit" class="btn btn-primary">Submit Changes</button>
+                                <button type="submit" class="btn btn-success">Submit Changes</button>
                             </div>
                         </form>
                     </div>

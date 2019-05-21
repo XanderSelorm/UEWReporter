@@ -47,5 +47,6 @@
             $('textarea').summernote()
         })
     </script>
+    @yield('scripts')
 </body>
 </html>

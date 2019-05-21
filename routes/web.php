@@ -38,12 +38,13 @@ Route::get('/', 'PagesController@index');
 Route::get('/notifications', 'PagesController@notifications');
 Route::get('/register', 'PagesController@registration');
 Route::get('/login', 'PagesController@login');
-Route::get('/profile', 'PagesController@showProfile');
+Route::get('/profile/{id}', 'PagesController@showProfile')->name('profile');
+Route::get('/profile/{id}/update', 'PagesController@updateProfile')->name('profile.update');
 Route::resource('/posts', 'SinglePostController');
 
 //Collections
 Route::get('/posts/tags/{tag}', 'TagsController@index');
-Route::get('/posts/categories/{name}', 'CollectionsController@categoryPosts');
+Route::get('/posts/categories/{id}', 'CollectionsController@categoryPosts');
 
 //Create Permission Pages
 Route::get('/partials/basicPermission', 'PagesController@basicPermission');
