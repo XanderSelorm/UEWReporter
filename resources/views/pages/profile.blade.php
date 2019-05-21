@@ -58,7 +58,7 @@
 
               <div class="form-group col-md-6">
                   <label for="mobile">Mobile</label>
-                  <input type="text" class="form-control" name="mobile" id="mobile" value="{{$user->phone}}" placeholder="enter mobile number" title="enter your mobile number if any.">
+                  <input type="text" class="form-control" name="phone" id="mobile" value="{{$user->phone}}" placeholder="enter mobile number" title="enter your mobile number if any.">
               </div>
             </div>  
           
