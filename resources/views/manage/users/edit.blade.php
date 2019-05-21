@@ -15,7 +15,18 @@
                             {{method_field('PUT')}}
                             @csrf
         
-                            <div class="col-md-6 mr-auto">
+                            
+                            <div class="col-md-3">
+                                <div class="form-group profile-img">
+                                    <img src="/storage/profile_images/avatar.png" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
+                                    <span class="file btn btn-lg btn-primary">
+                                        <input type="file" class="text-center center-block file-upload" id="inputFile" name="profile_picture">  
+                                        Change Photo
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="name">{{ __('Name') }}</label>
                                     <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus>
@@ -43,13 +54,14 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                 </div>
                             </div>
-        
-                            <div class="col-md-6 ml-auto">
-                                <label for="roles">Roles:
-                                    <input type="hidden" name="roles" :value="rolesSelected">
-                                </label>
                                 
-                                <div class="form-group">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <label for="roles">Roles:</label>
+                                    <input type="hidden" id="roles" name="roles" :value="rolesSelected">                           
+                                </div>
+                                    
+                                <div class="form-group col-md-12">
                                     @foreach ($roles as $role)
                                         <div class="form-check">
                                             <label class="form-check-label">
@@ -58,10 +70,9 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                
                             </div>
-        
-                            <div class="form-group ml-auto mr-auto">
+                            <hr>
+                            <div class="form-group mx-auto">
                                 <button type="submit" class="btn btn-primary">Submit Changes</button>
                             </div>
                         </form>
@@ -105,6 +116,22 @@
                 password.show();
                 password_confirmation.show();
             }
+        });
+
+        var readURL = function(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(".file-upload").on('change', function(){
+            readURL(this);
         });
     });
 </script>    

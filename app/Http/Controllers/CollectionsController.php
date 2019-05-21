@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
 
 class CollectionsController extends Controller
 {
@@ -17,10 +18,10 @@ class CollectionsController extends Controller
         //
     }
 
-    public function categoryPosts(Category $category) 
+    public function categoryPosts($id) 
     {
-        $posts = $category->post(); dd($posts);
-        return view('pages.index', compact('posts'));
+        $posts = Post::where('category_id', $id)->paginate(5);
+        return view('pages.index')->withPosts($posts);
     }
 
     /**

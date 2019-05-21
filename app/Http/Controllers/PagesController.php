@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Carbon\Carbon;
+use App\Role;
 
 class PagesController extends Controller
 {
@@ -30,8 +31,36 @@ class PagesController extends Controller
         return view('pages.notifications');
     }
 
-    public function profile(){
-        return view('pages.profile');
+    public function showProfile($id){
+        $roles = Role::all();
+        $user = User::where('id', $id)->with('roles')->first();
+        return view('pages.profile')->withUser($user)->withRoles($roles);;
+    }
+
+    public function updateProfile(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => ['confirmed'],
+        ]);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        
+        if (!empty($request->password)) {
+            $password = trim($request->password);
+            $user->password = Hash::make($password);
+        } 
+        
+        $user->save();
+        
+        
+        if ($user->syncRoles(explode(',', $request->roles))) {
+        return redirect()->route('users.show', $id)->with('success', 'User Details Updated Successfully');
+        } 
+        else {
+            return redirect()->route('manage.users.edit', $user)->with('danger', 'Sorry, a problem occured while updating the User Details');
+        } 
     }
 
     //public function publishModal(){

@@ -50,11 +50,10 @@
 
                     <div class="form-group">
                         <label for="selCategory">Select Category</label>
-                        <select class="form-control" id="selCategory">
-                            <option>General Announcement</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <select class="form-control" id="selCategory" name="category_id">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->display_name }}</option>
+                            @endforeach
                         </select>
                     </div>
 

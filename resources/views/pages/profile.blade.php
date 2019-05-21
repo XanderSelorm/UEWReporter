@@ -51,8 +51,9 @@
     <!--/col-3-->
 
     <div class="col-md-12">
-      <form class="form" action="##" method="post" id="profileForm">
-        <div class="row">
+        <form method="POST" action="{{ route('users.update', $user->id) }}" class="row">
+          {{method_field('PUT')}}
+          @csrf
 
           <div class="col-md-3">
               <div class="profile-img">

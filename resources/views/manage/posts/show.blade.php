@@ -21,15 +21,15 @@
         <h1>{{$post->title}}</h1>
         <small>
             <i class="fa fa-clock"></i> {{$post->created_at->toDayDateTimeString()}} &emsp;
-            <i class="fa fa-reset"></i> {{$post->updated_at->toDayDateTimeString()}} &emsp;  
+            <i class="fa fa-repeat"></i> {{$post->updated_at->toDayDateTimeString()}} &emsp;  
             <i class="fa fa-user"></i> {{$post->user->name}} &emsp; 
             <i class="fa fa-folder-open"></i> {{$post->category->display_name}}
-            <hr>
+            {{-- <hr>
             @if (!empty($post->tag))
             @foreach( $post->tag as $tag )
                 <span class="badge bg-info m-0 p-2"><i class="fa fa-tag"></i> <a href="/posts/tags/{{ $tag->name }}" class="text-dark">{{ $tag->name }} </a></span>
             @endforeach  
-            @endif
+            @endif --}}
             <!---->
 
         </small>

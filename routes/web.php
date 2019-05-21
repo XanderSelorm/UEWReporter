@@ -38,7 +38,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/notifications', 'PagesController@notifications');
 Route::get('/register', 'PagesController@registration');
 Route::get('/login', 'PagesController@login');
-Route::get('/profile', 'PagesController@profile');
+Route::get('/profile', 'PagesController@showProfile');
 Route::resource('/posts', 'SinglePostController');
 
 //Collections

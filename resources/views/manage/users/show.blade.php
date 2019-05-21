@@ -38,7 +38,7 @@
                     <ul>
                         {{ $user->roles->count() == 0 ? 'This user has not been assigned any roles yet' : '' }}
                         @foreach ($user->roles as $role)
-                        <li>{{$role->display_name}}  <em> ({{$role->description}})</em></li>
+                            <li>{{$role->display_name}}  <em> ({{$role->description}})</em></li>
                         @endforeach
                     </ul>                
                 </div>

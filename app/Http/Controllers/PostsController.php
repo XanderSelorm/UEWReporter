@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Tag;
+use App\Category;
 use DB;
 
 class PostsController extends Controller
@@ -57,8 +58,9 @@ class PostsController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         $tags = Tag::all();
-        return view('manage.posts.create')->withTags($tags);
+        return view('manage.posts.create')->withTags($tags)->withCategories($categories);
     }
 
     /**
@@ -116,7 +118,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('id', $id)->with(['tags', 'category'])->first();
+        $post = Post::where('id', $id)->with(['tag', 'category'])->first();
         //$post = Post::where('id', $id)->with('tags')->first();
         // dd($post);
         //$post = DB::select('SELECT * FROM posts where id = "$id"');
