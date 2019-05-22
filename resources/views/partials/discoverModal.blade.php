@@ -20,7 +20,7 @@
               <div class="media-heading row">
                   <a class="h4">{{$category->display_name}}</a>
                   <span class="ml-auto">
-                    <button type="button" id="sendEmail" class="btn btn-primary btn-sm">Subscribe <i class="fa fa-rss"></i></button>
+                    <button type="button" id="btnSubscribe" class="btn btn-primary btn-sm">Subscribe <i class="fa fa-rss"></i></button>
                   </span>
               </div>
               <div class="media-body row mt-3">
@@ -39,37 +39,39 @@
 
 <script>
 $(document).ready(function() {
-  function sendEmail(callback) {
-  callback();
-}
+  function subscribe(callback) {
+    callback();
+  }
 
-$('#SendEmail').on('click', function() {
-  //save this to var
-  var thisContext = this;
-  //console.log(thisContext);
-  $('#sendEmail').html('wait <i class="fa fa-sync fa-spin"></i>');
-  sendEmail(function() {
-    callback("4", thisContext);
-    console.log(thisContext);
-  });
-});
+  $('#btnSubscribe').on('click', function() {
+    //save this to var
+    var thisContext = this;
+    //console.log(thisContext);
 
-function callback(id, context) {
-  console.log(id);
-  var serverURL = "/echo/json/";
-  $.ajax({
-    url: serverURL,
-    type: "POST",
-    success: function(result) {
-     
-      setTimeout(function() {
-        $('#sendEmail').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
-      }, 1000);
-    },
-    error: function(error) {
-      $("#loading").hide();
-    }
+    $('#btnSubscribe').html('wait <i class="fa fa-sync fa-spin"></i>');
+    subscribe(function() {
+      callback("4", thisContext);
+      console.log(thisContext);
+    });
   });
-};
+
+  function callback(id, context) {
+    console.log(id);
+    var serverURL = "/echo/json/";
+    
+    $.ajax({
+      url: serverURL,
+      type: "POST",
+      success: function(result) {
+      
+        setTimeout(function() {
+          $('#btnSubscribe').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
+        }, 1000);
+      },
+      error: function(error) {
+        $("#loading").hide();
+      }
+    });
+  };
 });
 </script>    

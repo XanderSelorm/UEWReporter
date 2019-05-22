@@ -9,14 +9,12 @@
             </div>
             <div id="sidebar" class="collapse-sm">
                 <div class="list-group list-group-flush">
-                        @foreach($categories as $category)
-                
-                            <p class="text-center">
-                                <a href="/posts/categories/{{$category->id}}">
-                                    {{ $category->display_name }}
-                                </a>
-                            </p>
-                        @endforeach
+                    <a href="/home" class="list-group-item">All Announcements</a>
+                    @foreach($categories as $category)
+                        <a href="/posts/categories/{{$category->id}}" class="list-group-item">
+                            {{ $category->display_name }}
+                        </a>
+                    @endforeach
 
                     <button class="btn btn-primary btn-sm my-3" data-toggle="modal" data-target="#discoverModal">Discover <i class="fa fa-lightbulb-o"></i></button>
                 </div>
