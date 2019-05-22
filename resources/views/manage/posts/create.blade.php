@@ -49,15 +49,15 @@
                     <input type="hidden" name="tags" :value="tagSelected">
 
                     <div class="form-group">
-                        <label for="selCategory">Select Category</label>
-                        <select class="form-control" id="selCategory" name="category_id">
+                        <label for="category_id">Category</label>
+                        <select class="form-control" id="category_id" name="category_id">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->display_name }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Add Tags <span class="fa fa-caret-down"></span></button>
+                    {{-- <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Add Tags <span class="fa fa-caret-down"></span></button>
 
                     <div id="sidebar-archive" class="collapse in">
                         @foreach ($tags as $tag)
@@ -73,7 +73,7 @@
                             Add new Tag
                             <input type="text" class="form-input" v-model="tagSelected" :value="{{$tag->id}}">
                         </label>
-                    </div>
+                    </div> --}}
                     
                 </div>
             </div>

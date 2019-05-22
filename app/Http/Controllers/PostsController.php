@@ -101,6 +101,7 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = Auth()->user()->id;
         $post->cover_image = $filenameToStore;
+        $post->category_id = $request->input('category_id');
         $post->save();
 
         if ($request->tags) {
@@ -133,14 +134,14 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::where('id', $id)->with('tag')->first();
-        $tags = Tag::all();
+        $post = Post::where('id', $id)->with(['tag', 'category'])->first();
+        $categories = Category::all();
 
         //Check for correct User
         if(auth()->user()->id !== $post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
-        return view('manage.posts.edit')->withPost($post)->withTags($tags);
+        return view('manage.posts.edit')->withPost($post)->withCategories($categories);
     }
 
     /**
