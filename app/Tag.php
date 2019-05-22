@@ -15,10 +15,6 @@ class Tag extends Model
         return $this->belongsTo('App\Post');
     }
 
-    // public function users(){
-    //     return $this->belongsToMany(User::class);
-    // }
-
     public function getRouteKeyName(){
         return 'name';
     }
