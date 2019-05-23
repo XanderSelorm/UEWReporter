@@ -17,7 +17,7 @@ class Category extends Model
     }
 
     public function users(){
-        return $this->belongsToMany('App\User', 'id');
+        return $this->belongsToMany('App\User', 'category_user', 'category_id', 'user_id');
     }
     
 }

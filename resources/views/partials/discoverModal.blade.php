@@ -1,4 +1,5 @@
-<div class="modal fade " data-backdrop="static" data-keyboard="false"   id="discoverModal" tabindex="-1" role="dialog" aria-hidden="true">
+{{-- data-backdrop="static" data-keyboard="false" --}}
+<div class="modal fade " id="discoverModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     
     <div class="modal-content">
@@ -20,7 +21,9 @@
               <div class="media-heading row">
                   <a class="h4">{{$category->display_name}}</a>
                   <span class="ml-auto">
-                    <button type="button" id="btnSubscribe" class="btn btn-primary btn-sm">Subscribe <i class="fa fa-rss"></i></button>
+                    {{-- <form action="" method="post"> --}}
+                      <button value="{{$category->id}}" type="button" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary btn-sm">Subscribe <i class="fa fa-rss"></i></button>
+                    {{-- </form> --}}
                   </span>
               </div>
               <div class="media-body row mt-3">
@@ -43,12 +46,13 @@ $(document).ready(function() {
     callback();
   }
 
-  $('#btnSubscribe').on('click', function() {
+  $('#btnSubscribe{{$category->id}}').on('click', function() {
     //save this to var
     var thisContext = this;
     //console.log(thisContext);
 
-    $('#btnSubscribe').html('wait <i class="fa fa-sync fa-spin"></i>');
+    $('#btnSubscribe{{$category->id}}').html('wait <i class="fa fa-sync fa-spin"></i>');
+    
     subscribe(function() {
       callback("4", thisContext);
       console.log(thisContext);
@@ -65,7 +69,7 @@ $(document).ready(function() {
       success: function(result) {
       
         setTimeout(function() {
-          $('#btnSubscribe').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
+          $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
         }, 1000);
       },
       error: function(error) {

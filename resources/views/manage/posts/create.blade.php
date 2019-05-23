@@ -57,7 +57,7 @@
                         </select>
                     </div>
 
-                    {{-- <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Add Tags <span class="fa fa-caret-down"></span></button>
+                    <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Add Tags <span class="fa fa-caret-down"></span></button>
 
                     <div id="sidebar-archive" class="collapse in">
                         @foreach ($tags as $tag)
@@ -73,7 +73,7 @@
                             Add new Tag
                             <input type="text" class="form-input" v-model="tagSelected" :value="{{$tag->id}}">
                         </label>
-                    </div> --}}
+                    </div>
                     
                 </div>
             </div>

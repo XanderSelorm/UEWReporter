@@ -26,16 +26,13 @@
         <div class="list-group">
             <div class="sidebar-heading">
                 <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Announcement Archives <span class="fa fa-caret-down"></span></button>
-                
             </div>
             <div id="sidebar-archive" class="collapse-out">
-                <div class="list-group">
+                <div class="list-group list-group-flush">
                     @foreach($archives as $stats)
-                        <p class="text-center">
-                            <a href="/?month={{ $stats['month'] }}&year={{ $stats['year'] }}">
-                                {{ $stats['month'].' '.$stats['year'].' ('.$stats['published'].')'}}            
-                            </a>
-                        </p>
+                        <a href="/?month={{ $stats['month'] }}&year={{ $stats['year'] }}" class="list-group-item">
+                            {{ $stats['month'].' '.$stats['year'].' ('.$stats['published'].')'}}            
+                        </a>
                     @endforeach
                 </div>
             </div>

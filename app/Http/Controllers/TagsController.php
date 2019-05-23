@@ -14,8 +14,8 @@ class TagsController extends Controller
      */
     public function index(Tag $tag)
     {
-        $posts = $tag->post()->paginate(5);
-        return view('pages.index', compact('posts'));
+        $tags = $tag->paginate(5);
+        return view('manage.tags.index', compact('tags'));
     }
 
     /**
@@ -36,7 +36,15 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'sometimes|max:255'
+        ]);
+        //Create Tag
+        $tag = new Tag;
+        $tag->name = $request->input('name');
+        $tag->save();
+
+        return redirect('/manage/tags')->with('success', 'Tag Created Successfully');
     }
 
     /**

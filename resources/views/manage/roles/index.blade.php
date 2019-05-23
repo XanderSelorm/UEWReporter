@@ -35,12 +35,6 @@
                                     <td>
                                         <a href="roles/{{$role->id}}" class="btn btn-primary btn-sm"><i class="fa fa-file"></i> View</a>
                                         <a href="roles/{{$role->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
-
-                                        {{-- {!!Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                            {{Form::hidden('_method', 'DELETE')}}
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
-                                            <!--{{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}-->
-                                        {!!Form::close()!!} --}}
                                     </td>
                                 </tr>
                             @endforeach

@@ -11,8 +11,8 @@ class Tag extends Model
 
     //Model Relationships
 
-    public function post(){
-        return $this->belongsTo('App\Post');
+    public function posts(){
+        return $this->belongsToMany('App\Post', 'post_tag', 'post_id', 'tag_id');
     }
 
     public function getRouteKeyName(){
