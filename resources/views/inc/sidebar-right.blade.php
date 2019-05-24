@@ -1,7 +1,7 @@
 @include('partials.discoverModal')
 
 <!--SIDEBAR-->
-<div class="">
+<div class="col">
     @auth
         <div class="list-group">
             <div class="sidebar-heading">
@@ -9,14 +9,20 @@
             </div>
             <div id="sidebar" class="collapse-sm">
                 <div class="list-group list-group-flush">
-                    <a href="/home" class="list-group-item">All Announcements</a>
+                    <a href="/home" class="list-group-item">
+                        <i class="fa fa-caret-right"></i>
+                        All Announcements
+                        {{-- <span class="badge pull-right badge-primary">{{$posts->count()}}</span> --}}
+                    </a>
                     @foreach($categories as $category)
                         <a href="/posts/categories/{{$category->id}}" class="list-group-item">
+                            <i class="fa fa-caret-right"></i>
                             {{ $category->display_name }}
+                            <span class="badge pull-right badge-primary">{{$category->post->count()}}</span>
                         </a>
                     @endforeach
-
-                    <button class="btn btn-primary btn-sm my-3" data-toggle="modal" data-target="#discoverModal">Discover <i class="fa fa-lightbulb-o"></i></button>
+                    <a type="button" href="/discover" class="btn btn-primary text-light btn-sm my-3">Discover <i class="fa fa-lightbulb-o"></i></a>
+                    {{-- <button class="btn btn-primary btn-sm my-3" data-toggle="modal" data-target="#discoverModal">Discover <i class="fa fa-lightbulb-o"></i></button> --}}
                 </div>
             </div>
         </div>

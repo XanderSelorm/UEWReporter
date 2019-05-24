@@ -26,7 +26,7 @@
 @endsection
 
 @section('content')
-   <div class="row col">
+   <div class="row justify-content-center">
       <div class="col-md-8 col-sm-12 " >
          <ul class="list-unstyled">
                @if(count($posts) > 0)

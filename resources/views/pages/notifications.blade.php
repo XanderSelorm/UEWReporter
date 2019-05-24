@@ -27,8 +27,8 @@
 @endsection
 
 @section('content')
-<div class="row col">
-        <div class="col-md-9 col-sm-12 card" >
+<div class="row justify-content-center">
+        <div class="col-md-8 col-sm-12 card mr-3" >
             <div class="newsStrip">                    
                 <div class="row panel notificationStripItem">
                     <div class="col-md-1">

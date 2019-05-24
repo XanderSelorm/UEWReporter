@@ -36,7 +36,7 @@
         @yield('header')
     </header>
 
-    <div class="container container-app" id="app">
+    <div class="container-fluid container-app mx-auto" id="app">
         <div class="" id="myContent">
             @yield('content')
         </div>

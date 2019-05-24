@@ -36,9 +36,9 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
 Route::get('/home', 'PagesController@index');
 Route::get('/', 'PagesController@index');
 Route::get('/notifications', 'PagesController@notifications');
-//Route::get('/register', 'PagesController@registration');
+Route::get('/discover', 'PagesController@discover')->name('discover');
 //Route::get('/login', 'PagesController@login');
-Route::get('/search', 'PagesController@search')->name('pages.search');
+Route::get('/search', 'PagesController@search')->name('search');
 Route::resource('/profile', 'ProfilesController');
 // Route::get('/profile/{id}', 'ProfilesController@show')->name('profile');
 // Route::get('/profile/{id}/update', 'ProfilesController@update')->name('profile.update');

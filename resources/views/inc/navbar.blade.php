@@ -25,7 +25,7 @@
                             <a class="nav-link" href="/posts/create"><i class="fa fa-plus"></i> Publish</a>
                         </li> --}}
             
-                        <form class="nav-item mt-1 ml-3" id="nav-search" action="{{route('pages.search')}}" role="search" method="get" name="frontSearch">
+                        <form class="nav-item mt-1 ml-3" id="nav-search" action="{{route('search')}}" role="search" method="get" name="frontSearch">
                             {{-- @csrf --}}
                             <div class="input-group input-group-sm" style="max-width:360px;">
                                 <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">

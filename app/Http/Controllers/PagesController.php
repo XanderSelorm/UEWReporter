@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Input;
+use DB;
+use App\Category;
 
 class PagesController extends Controller
 {
@@ -35,25 +37,39 @@ class PagesController extends Controller
 
 
     public function search(Request $request){
-        $query = $request->input('frontSearch');
-            // $users = User::where('name', 'LIKE', '%' . $query . '%')
-            //     ->orWhere('email', 'LIKE', '%' . $query . '%')
-            //     ->get();
-            // if(count($users) > 0) {
-            //     return view('pages.search')->withResults($users)->withQuery($query);
-            // }
+        // $query = $request->input('frontSearch');
+
+        // $posts = Post::where('title', 'LIKE', '%' . $query . '%')
+        //     ->orWhere('body', 'LIKE', '%' . $query . '%')
+        //     ->get();
+
+        // if(count($posts) > 0) {
+        //     return view('pages.search')->with('posts', $posts)->with('query', $query);
+        // }
+        
+        // else {
+        //     return view('pages.search')->withMessage('danger', 'No results found for your search query.');
+        // }   
+
+        $query = $request->get('frontSearch');
+
             $posts = Post::where('title', 'LIKE', '%' . $query . '%')
                 ->orWhere('body', 'LIKE', '%' . $query . '%')
+                ->orderBy('created_at', 'desc')
                 ->paginate(10);
-                // dd($posts);
+
             if(count($posts) > 0) {
                 return view('pages.search')->with('posts', $posts)->with('query', $query);
             }
-            
             else {
                 return view('pages.search')->withMessage('danger', 'No results found for your search query.');
-            }   
+            }
         
+    }
+
+    public function discover() {
+        $categories = Category::all();
+        return view('pages.discover')->with('categories', $categories);//->with('query', $query);
     }
 
     //public function publishModal(){

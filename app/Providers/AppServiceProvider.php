@@ -30,8 +30,9 @@ class AppServiceProvider extends ServiceProvider
 
             $archives = \App\Post::archives();
             $categories = \App\Category::all();
+            $posts = \App\Post::all();
 
-            $view->with(compact('archives', 'categories'));
+            $view->with(compact('archives', 'categories', 'posts'));
             //$view->with('categories', \App\Category::has('posts')->pluck('display_name'));
         });
     }

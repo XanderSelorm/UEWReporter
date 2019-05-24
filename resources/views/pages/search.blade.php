@@ -28,14 +28,12 @@
 @endsection
 
 @section('content')
-   <div class="row col">
+   <div class="row justify-content-center">
       <div class="col-md-8 col-sm-12 " >
          <ul class="list-unstyled">
                @if(count($posts) > 0)
                   @foreach($posts as $post)
                      <li>
-                        {{-- New --}}
-                           <!--- \\\\\\\Post-->
                         <div class="card gedf-card">
                            <div class="card-header">
                               <div class="d-flex justify-content-between align-items-center">
@@ -46,7 +44,6 @@
                                              <i class="fa fa-clock"></i> {{$post->created_at->diffForHumans()}} &emsp; 
                                              <i class="fa fa-folder-open"></i> {{ $post->category->display_name }}
                                           </small> 
-                                          {{-- {{ dd($post->category) }} --}}
                                        </div>
                                  </div>
                               </div>
@@ -68,12 +65,10 @@
                               <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary btn-block">Read</a>
                            </div>
                         </div>
-                     <!-- Post /////-->
-                        {{-- New End --}}
                      </li>
                   @endforeach
 
-                  <span class="row justify-content-center"> {{$posts->links()}} </span>
+                  {{-- <span class="row justify-content-center"> {{$posts->links()}} </span> --}}
                @else
                   <div class="card">
                      <div class="card-header">
@@ -98,4 +93,20 @@
       </div>
    
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function(){
+   {{--// function fetchPosts(query = ''){
+   //    url:"{{ route('/search') }}",
+   //    method: "GET",
+   //    data: {query:query},
+   //    dataType:'json'
+   //    success: function(data){
+   //       $( )
+   //    } 
+   --}}
+});
+</script>
 @endsection
