@@ -12,9 +12,7 @@
                 <ul class="navbar-nav mr-auto">
 
                 </ul>
-                @guest
-                    
-                @else
+                @auth
                 <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="/"><i class="fa fa-newspaper"></i> Home</a>
@@ -27,16 +25,17 @@
                             <a class="nav-link" href="/posts/create"><i class="fa fa-plus"></i> Publish</a>
                         </li> --}}
             
-                        <form class="nav-item mt-1 ml-3" id="nav-search">
+                        <form class="nav-item mt-1 ml-3" id="nav-search" action="{{route('pages.search')}}" role="search" method="get" name="frontSearch">
+                            {{-- @csrf --}}
                             <div class="input-group input-group-sm" style="max-width:360px;">
                                 <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
                                 <div class="input-group-append">
-                                <button class="btn btn-light border" type="submit"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-light border" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
                     </ul>
-                @endguest
+                @endauth
                 <!--Custom Menu Items-->
                 <!--<ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -46,7 +45,7 @@
                         <a class="nav-link" href="/notifications"><i class="fa fa-bell"></i> Notifications</a>
                     </li>
                     <li class="nav-item">
-                        <!--<a class="nav-link show-modal" data-toggle="modal" data-target="#publishModal" data-backdrop="static" href="#"><i class="fa fa-plus"></i> Publish</a>->
+                        <!-<a class="nav-link show-modal" data-toggle="modal" data-target="#publishModal" data-backdrop="static" href="#"><i class="fa fa-plus"></i> Publish</a>->
                         <a class="nav-link" href="/posts/create"><i class="fa fa-plus"></i> Publish</a>
                     </li>
                     <li class="nav-item dropdown">

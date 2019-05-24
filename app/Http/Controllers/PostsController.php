@@ -120,7 +120,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('id', $id)->with(['tag', 'category'])->first();
+        $post = Post::where('id', $id)->with(['tags', 'category'])->first();
         //$post = Post::where('id', $id)->with('tags')->first();
         // dd($post);
         //$post = DB::select('SELECT * FROM posts where id = "$id"');
@@ -135,14 +135,15 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::where('id', $id)->with(['tag', 'category'])->first();
+        $post = Post::where('id', $id)->with(['tags', 'category'])->first();
         $categories = Category::all();
+        $tags = Tag::all();
 
         //Check for correct User
         if(auth()->user()->id !== $post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
-        return view('manage.posts.edit')->withPost($post)->withCategories($categories);
+        return view('manage.posts.edit')->withPost($post)->withCategories($categories)->withTags($tags);
     }
 
     /**

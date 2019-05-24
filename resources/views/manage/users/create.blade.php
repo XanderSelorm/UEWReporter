@@ -14,7 +14,7 @@
                     @csrf
                     <div class="col-md-3">
                         <div class="form-group profile-img">
-                            <img src="/storage/profile_images/avatar.png" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
+                            <img src="/storage/profile_pictures/avatar.png" class="avatar img-thumbnail img-responsive" alt="Profile Image"/>
                             <span class="file btn btn-lg btn-primary">
                                 <input type="file" class="text-center center-block file-upload" id="inputFile" name="profile_picture">  
                                 Change Photo
