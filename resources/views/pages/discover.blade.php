@@ -28,18 +28,18 @@
 @endsection
 
 @section('content')
-   <div class="row col">
+   <div class="row justify-content-center">
       <div class="col-md-8 col-sm-12 " >
          <ul class="list-unstyled">
             @if(count($categories) > 0)
                 @foreach ($categories as $category)
-                <div class="media shadow border bg-light p-3 mb-3">
+                <div class="card shadow border bg-light p-3 mb-3">
                     <div class="col">
                     <div class="media-heading row">
                         <a class="h4">{{$category->display_name}}</a>
                         <span class="ml-auto">
                             {{-- <form action="" method="post"> --}}
-                            <button value="{{$category->id}}" type="button" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary">Subscribe <i class="fa fa-rss"></i></button>
+                                <button value="{{$category->id}}" type="button" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary">Subscribe <i class="fa fa-rss"></i></button>
                             {{-- </form> --}}
                         </span>
                     </div>
@@ -55,7 +55,7 @@
                   <div class="card">
                      <div class="card-header">
                         <p class="h5 m-0 text-center">
-                           <i class="fa fa-exclamation-circle text-danger"></i> Oops! No categories available
+                           <i class="fa fa-exclamation-circle text-danger"></i> Oops!
                         </p>
                      </div>
                      <div class="card-body">
@@ -78,16 +78,42 @@
 
 @section('scripts')
 <script>
-$(document).ready(function(){
-   {{--// function fetchPosts(query = ''){
-   //    url:"{{ route('/search') }}",
-   //    method: "GET",
-   //    data: {query:query},
-   //    dataType:'json'
-   //    success: function(data){
-   //       $( )
-   //    } 
-   --}}
-});
-</script>
+    $(document).ready(function() {
+        function subscribe(callback) {
+        callback();
+        }
+    
+        $('#btnSubscribe{{$category->id}}').on('click', function() {
+        save this to var
+        var thisContext = this;
+        console.log(thisContext);
+    
+        $('#btnSubscribe{{$category->id}}').html('wait <i class="fa fa-sync fa-spin"></i>');
+        
+        subscribe(function() {
+            callback("4", thisContext);
+            console.log(thisContext);
+        });
+        });
+    
+        function callback(id, context) {
+        console.log(id);
+        var serverURL = "/echo/json/";
+        
+        $.ajax({
+            url: {{route('discover.subscribe', )}},
+            type: "POST",
+            success: function(result) {
+            
+            setTimeout(function() {
+                $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
+            }, 1000);
+            },
+            error: function(error) {
+                $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-danger').html('Error <i class="fa fa-exclamation"></i>');
+            }
+        });
+        };
+    });
+</script>   
 @endsection

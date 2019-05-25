@@ -18,6 +18,7 @@ class CollectionsController extends Controller
         //
     }
 
+    //Moved to PagesController
     public function categoryPosts($id) 
     {
         $posts = Post::where('category_id', $id)->paginate(5);

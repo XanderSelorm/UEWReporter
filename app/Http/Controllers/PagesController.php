@@ -51,7 +51,7 @@ class PagesController extends Controller
         //     return view('pages.search')->withMessage('danger', 'No results found for your search query.');
         // }   
 
-        $query = $request->get('frontSearch');
+        $query = $request->input('frontSearch');
 
             $posts = Post::where('title', 'LIKE', '%' . $query . '%')
                 ->orWhere('body', 'LIKE', '%' . $query . '%')
@@ -72,6 +72,16 @@ class PagesController extends Controller
         return view('pages.discover')->with('categories', $categories);//->with('query', $query);
     }
 
+    public function categoryPosts($id) 
+    {
+        $category = category::where('id', $id)->first();
+        $posts = Post::where('category_id', $id)->with('category')->paginate(5);
+        return view('pages.categories')->withPosts($posts)->withCategory($category);
+    }    
+    
+    
+    
+    
     //public function publishModal(){
     //    return view('partials.publishModal');
     //}
