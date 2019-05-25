@@ -91,9 +91,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                {{-- @if(Auth::user()->role == "superadministrator") --}}
+                                @if(Auth::user()->hasRole('subscriber'))
+                                
+                                @else
                                     <a class="dropdown-item" href="/manage/dashboard"><i class="fa fa-tachometer"></i> Dashboard</a>
-                                {{-- @endif --}}
+                                @endif
                                 <a class="dropdown-item" href="{{route('profile.show', Auth::user()->id)}}"><i class="fa fa-user-circle"></i> Profile</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

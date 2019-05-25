@@ -101,7 +101,7 @@
         var serverURL = "/echo/json/";
         
         $.ajax({
-            url: {{route('discover.subscribe', )}},
+            url: serverURL,
             type: "POST",
             success: function(result) {
             
