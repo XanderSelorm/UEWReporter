@@ -103,11 +103,10 @@
         $.ajax({
             url: serverURL,
             type: "POST",
-            success: function(result) {
-            
-            setTimeout(function() {
-                $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
-            }, 1000);
+            success: function(result) {      
+               setTimeout(function() {
+                  $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
+               }, 1000);
             },
             error: function(error) {
                 $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-danger').html('Error <i class="fa fa-exclamation"></i>');

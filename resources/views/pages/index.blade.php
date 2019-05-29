@@ -13,8 +13,8 @@
 
                   <div class="site-heading-buttons mt-4">
                      @guest
-                        <a href="/login" class="col-md-2 btn btn-primary mr-3">Sign In <i class="fa fa-sign-in"></i></a>
-                        <a href="/register" class="col-md-2 btn btn-success">Sign Up <i class="fa fa-user-plus"></i></a>
+                        <a href="/login" class="col-md-2 btn btn-primary mr-3 mb-2">Sign In <i class="fa fa-sign-in"></i></a>
+                        <a href="/register" class="col-md-2 btn btn-success mb-2">Sign Up <i class="fa fa-user-plus"></i></a>
                      @endguest
                   </div>
                </div>
@@ -28,13 +28,13 @@
 @section('content')
    <div class="row justify-content-center">
       <div class="col-md-8 col-sm-12 " >
-         <ul class="list-unstyled">
+         <ul class="list-unstyled" id="newsStrip">
                @if(count($posts) > 0)
                   @foreach($posts as $post)
                      <li>
                         {{-- New --}}
                            <!--- \\\\\\\Post-->
-                        <div class="card gedf-card">
+                        <div class="card gedf-card mb-3">
                            <div class="card-header">
                               <div class="d-flex justify-content-between align-items-center">
                                  <div class="d-flex">
@@ -96,4 +96,17 @@
       </div>
    
 </div>
+@endsection
+
+@section('scripts')
+<script>
+   $(document).ready(function(){
+     $("#srch-term").on("keyup", function() {
+       var value = $(this).val().toLowerCase();
+       $("#newsStrip li").filter(function() {
+         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+       });
+     });
+   });
+</script>
 @endsection

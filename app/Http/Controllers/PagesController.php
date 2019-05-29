@@ -36,22 +36,9 @@ class PagesController extends Controller
     }
 
 
-    public function search(Request $request){
-        // $query = $request->input('frontSearch');
+    public function search(Request $request){  
 
-        // $posts = Post::where('title', 'LIKE', '%' . $query . '%')
-        //     ->orWhere('body', 'LIKE', '%' . $query . '%')
-        //     ->get();
-
-        // if(count($posts) > 0) {
-        //     return view('pages.search')->with('posts', $posts)->with('query', $query);
-        // }
-        
-        // else {
-        //     return view('pages.search')->withMessage('danger', 'No results found for your search query.');
-        // }   
-
-        $query = $request->input('frontSearch');
+        $query = $request->input('srch-term');
 
             $posts = Post::where('title', 'LIKE', '%' . $query . '%')
                 ->orWhere('body', 'LIKE', '%' . $query . '%')

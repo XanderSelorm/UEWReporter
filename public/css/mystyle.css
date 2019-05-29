@@ -6,6 +6,7 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   padding-top: 60px;
+  background-color: #eeeeee2d;
 }
 
 #body{
@@ -16,25 +17,6 @@ body {
 .container-app {
     padding-top: 75px;
 }
-
-/* hidden spacer before sections for proper offset */
-/* section:before {
-    height: 50px;
-    content: "";
-    display:block;
-} */
-
-/* helpers */
-.vh-50 {
-    min-height: 50vh;
-}
-.vh-75 {
-    min-height: 75vh;
-}
-.vh-100 {
-    min-height: 100vh;
-}
-
 
 /* Customs */
 .nav-item>a{
@@ -49,22 +31,6 @@ body {
     box-shadow: 0px 1px 10px 1px rgba(117, 117, 117, 0.21); 
 } */
  
-
-/* News Strip (NEW Card Style) */
-.gedf-wrapper {
-  margin-top: 0.97rem;
-}
-
-@media (min-width: 992px) {
-  .gedf-main {
-      padding-left: 4rem;
-      padding-right: 4rem;
-  }
-  .gedf-card {
-      margin-bottom: 1rem;
-      /* box-shadow: 0px 1px 10px 1px rgba(117, 117, 117, 0.21);  */
-  }
-}
 /* End */
 
 
@@ -125,6 +91,15 @@ body {
     #sidebar-wrapper {
       min-width: 15rem;
         margin-left: -15rem;
+      }
+
+      header.headMast .header-image{
+        margin-top: 10rem;
+        /* height: 30rem; */
+      }
+
+      header.masthead .site-heading {
+        padding: 200px 0;
       }
     }
     

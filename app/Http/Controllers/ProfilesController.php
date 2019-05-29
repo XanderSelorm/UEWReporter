@@ -78,7 +78,7 @@ class ProfilesController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'phone' => ['sometimes', 'digits:10'],
+            'phone' => 'nullable|digits:10',
             'password' => ['confirmed'],
             'profile_picture' => 'image|nullable|max:1999'
         ]);
@@ -101,7 +101,10 @@ class ProfilesController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->phone = $request->phone;
+        if($request->input('phone') !== ""){
+            $user->phone = $request->phone;
+        }
+
         if($request->hasFile('profile_picture')){
             $user->profile_picture = $filenameToStore;
         }

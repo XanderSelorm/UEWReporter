@@ -43,7 +43,7 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'phone' => ['sometimes', 'digits:10'],
+            'phone' => ['nullable', 'digits:10'],
             'password' => ['required', 'confirmed'],
             'profile_picture' => 'image|nullable|max:1999'
         ]);
