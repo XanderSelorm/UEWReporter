@@ -72,7 +72,9 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $category = Category::findOrFail($id);
+        // $posts = Post::all();
+        $category = Category::where('id', $id)->with('post')->first();
+        // dd($category);
         return view('manage.categories.show')->withCategory($category);
     }
 
@@ -125,6 +127,11 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id)->with('post');
+        // $category->detach($id);
+
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Category Deleted Successfully');
     }
 }

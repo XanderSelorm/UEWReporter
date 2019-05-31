@@ -29,7 +29,7 @@
                         <tbody>    
                             @foreach($categories as $category)
                                 <tr>
-                                    <td>{{$category->display_name}}</td>
+                                    <td>{{$category->display_name}} <a class="badge badge-primary text-light"> {{ $category->post->count() }} </a></td>
                                     <td>{{$category->name}}</a></td>
                                     <td> {{ substr(strip_tags($category->description), 0, 50)}}...</td>
                                     <td>

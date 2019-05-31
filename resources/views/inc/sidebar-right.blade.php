@@ -1,4 +1,3 @@
-@include('partials.discoverModal')
 
 <!--SIDEBAR-->
 <div class="col">

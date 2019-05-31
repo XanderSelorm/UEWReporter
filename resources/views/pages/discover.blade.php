@@ -33,20 +33,20 @@
          <ul class="list-unstyled">
             @if(count($categories) > 0)
                 @foreach ($categories as $category)
-                <div class="card shadow border bg-light p-3 mb-3">
-                    <div class="col">
-                    <div class="media-heading row">
-                        <a class="h4">{{$category->display_name}}</a>
-                        <span class="ml-auto">
-                            {{-- <form action="" method="post"> --}}
-                                <button value="{{$category->id}}" type="button" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary">Subscribe <i class="fa fa-rss"></i></button>
-                            {{-- </form> --}}
-                        </span>
-                    </div>
-                    <div class="media-body row mt-3">
-                        <p>{{$category->description}}</p>
-                    </div>
-                    </div>
+                <div class="card shadow border bg-light p-3 mb-3 category">
+                  <div class="col">
+                     <div class="media-heading row">
+                           <a class="h4">{{$category->display_name}}</a>
+                           <span class="ml-auto">
+                              {{-- <form action="" method="post"> --}}
+                                 <button value="{{$category->id}}" type="button" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary">Subscribe <i class="fa fa-rss"></i></button>
+                              {{-- </form> --}}
+                           </span>
+                     </div>
+                     <div class="media-body row mt-3">
+                           <p>{{$category->description}}</p>
+                     </div>
+                  </div>
                 </div>
             @endforeach 
 
@@ -83,36 +83,37 @@
         callback();
         }
     
-        $('#btnSubscribe{{$category->id}}').on('click', function() {
-        save this to var
-        var thisContext = this;
-        console.log(thisContext);
-    
-        $('#btnSubscribe{{$category->id}}').html('wait <i class="fa fa-sync fa-spin"></i>');
-        
-        subscribe(function() {
-            callback("4", thisContext);
+        $('.category').find('.row').find('button.btnSubscribe').on('click', function() {
+            //save this to var
+            var thisContext = $(this);
             console.log(thisContext);
-        });
-        });
-    
-        function callback(id, context) {
-        console.log(id);
-        var serverURL = "/echo/json/";
-        
-        $.ajax({
-            url: serverURL,
-            type: "POST",
-            success: function(result) {      
-               setTimeout(function() {
-                  $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
-               }, 1000);
-            },
-            error: function(error) {
-                $('#btnSubscribe{{$category->id}}').removeClass('btn-primary').addClass('btn-danger').html('Error <i class="fa fa-exclamation"></i>');
-            }
-        });
-        };
-    });
-</script>   
+         
+            thisContext.html('wait <i class="fa fa-sync fa-spin"></i>');
+            
+            subscribe(function() {
+                  callback(thisContext);
+                  console.log(thisContext);
+            });
+         });
+         
+         function callback(context) {
+            //console.log(id);
+            var serverURL = "/echo/json/";
+         
+            $.ajax({
+                  url: serverURL,
+                  type: "POST",
+                  success: function(result) {      
+                        context.removeClass('btn-primary').addClass('btn-success').html('Subscribed <i class="fa fa-check"></i>');
+                  },
+                  error: function(error) {
+                     context.removeClass('btn-primary').addClass('btn-danger').html('Failed <i class="fa fa-exclamation"></i>');
+                     setTimeout(function() {
+                        context.removeClass('btn-danger').addClass('btn-primary').html('Subscribe <i class="fa fa-rss"></i>');
+                     }, 1000);     
+                  }
+            });
+         };
+   });
+</script> 
 @endsection

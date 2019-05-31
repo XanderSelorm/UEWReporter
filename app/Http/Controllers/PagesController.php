@@ -10,12 +10,14 @@ use App\User;
 use Illuminate\Support\Facades\Input;
 use DB;
 use App\Category;
+use Auth;
 
 class PagesController extends Controller
 {
     public function index()
     {
-        if ( !is_null(Post::class) ) {    
+        if ( !is_null(Post::class) ) {
+            // $user = Auth::user()->with('category')->first();    
             $posts = Post::latest()->with('category')->first() 
             ->filter( request( ['month', 'year'] ) )->orderBy('created_at', 'desc')
             ->paginate(5);
