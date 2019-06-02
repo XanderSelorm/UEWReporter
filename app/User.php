@@ -43,7 +43,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
-    public function categories(){
-        return $this->belongsToMany('App\Category');
+    public function categorySubscriptions(){
+        return $this->hasMany('App\CategorySubscription');
     }
 }

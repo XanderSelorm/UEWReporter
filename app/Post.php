@@ -50,4 +50,8 @@ class Post extends Model
     public function category() {
         return $this->belongsTo('App\Category', 'category_id');
     }
+
+    public function categorySubsctiptions() {
+        return $this->belongsToMany('App\CategorySubscription');
+    }
 }

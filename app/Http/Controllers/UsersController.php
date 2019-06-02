@@ -156,7 +156,7 @@ class UsersController extends Controller
         
         
         if ($user->syncRoles(explode(',', $request->roles))) {
-        return redirect()->route('users.show', $id)->with('success', 'User Details Updated Successfully');
+            return redirect()->route('users.show', $id)->with('success', 'User Details Updated Successfully');
         } 
         else {
             return redirect()->route('manage.users.edit', $user)->with('danger', 'Sorry, a problem occured while updating the User Details');

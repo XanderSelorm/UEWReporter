@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use DB;
 use App\Category;
 use Auth;
+use App\CategorySubscription;
 
 class PagesController extends Controller
 {
@@ -57,7 +58,7 @@ class PagesController extends Controller
     }
 
     public function discover() {
-        $categories = Category::all();
+        $categories = Category::all()->except('general-announcements');
         return view('pages.discover')->with('categories', $categories);//->with('query', $query);
     }
 
@@ -67,6 +68,10 @@ class PagesController extends Controller
         $posts = Post::where('category_id', $id)->with('category')->paginate(5);
         return view('pages.categories')->withPosts($posts)->withCategory($category);
     }    
+
+    public function unsubscribe(){
+        
+    }
     
     
     

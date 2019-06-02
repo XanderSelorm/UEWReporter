@@ -17,8 +17,11 @@ class CreateCategorySubscriptionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('category_id');
+            $table->boolean('subscribed')->nullable();
             $table->timestamps();
+            
             $table->unique(['user_id', 'category_id']);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }

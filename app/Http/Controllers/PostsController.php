@@ -91,7 +91,7 @@ class PostsController extends Controller
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             //Upload Image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
-                }
+        }
         else {
             $filenameToStore = "noimage.jpg";
         }
@@ -182,6 +182,7 @@ class PostsController extends Controller
         if($request->hasFile('cover_image')){
             $post->cover_image = $filenameToStore;
         }
+        $post->category_id = $request->input('category_id');
         $post->save();
 
         if ($request->tags) {
