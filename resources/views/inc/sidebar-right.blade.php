@@ -28,7 +28,7 @@
 
         <hr>
         
-        <div class="list-group">
+        {{-- <div class="list-group">
             <div class="sidebar-heading">
                 <button type="button" class="btn bg-default btn-sm btn-block mb-2 border" data-toggle="collapse" data-target="#sidebar-archive">Announcement Archives <span class="fa fa-caret-down"></span></button>
             </div>
@@ -41,12 +41,12 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div> --}}
     @endauth
     
     <hr>
     <!--Footer-->
-    <footer id="footer">
+    <footer id="footer" style="position: absolute; bottom: 0; width: 100%;">
         <div class="text-center brand text-secondary small mt-5">
             &copy; UEW Messenger, 2019. Powered by Xandech Internet Solutions
         </div>

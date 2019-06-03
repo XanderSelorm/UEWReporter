@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/notifications', 'PagesController@notifications');
     Route::get('/discover', 'PagesController@discover')->name('discover');
     Route::post('/discover/category/subscribe', 'CategorySubscriptionController@subscribe')->name('discover.category.subscribe');
-    Route::post('/discover/category/unsubscribe', 'PagesController@unsubscribe')->name('discover.category.unsubscribe');
+    Route::delete('/discover/category/unsubscribe/{id}', 'CategorySubscriptionController@unsubscribe');//->name('discover.category.unsubscribe');
     Route::resource('/profile', 'ProfilesController');
 });
     

@@ -58,8 +58,20 @@ class PagesController extends Controller
     }
 
     public function discover() {
-        $categories = Category::all()->except('general-announcements');
-        return view('pages.discover')->with('categories', $categories);//->with('query', $query);
+        $user = Auth::user();
+        $categories = Category::all();
+        $cat_subs = CategorySubscription::where('user_id', $user->id)->get(); 
+        $user_sub = $user->categorySubscriptions->all(); 
+        // dd($user_sub);
+        $isSubscribed = 0;
+        if(count($cat_subs) >0) {
+            $isSubscribed = 1;
+        }
+        else {
+            $isSubscribed = 0;
+        }
+        // dd($isSubscribed);
+        return view('pages.discover')->with('categories', $categories)->withUser($user)->with('cat_subs', $cat_subs)->with('isSubscribed', $isSubscribed)->with('user_sub', $user_sub);
     }
 
     public function categoryPosts($id) 
@@ -67,14 +79,7 @@ class PagesController extends Controller
         $category = category::where('id', $id)->first();
         $posts = Post::where('category_id', $id)->with('category')->paginate(5);
         return view('pages.categories')->withPosts($posts)->withCategory($category);
-    }    
-
-    public function unsubscribe(){
-        
-    }
-    
-    
-    
+    }   
     
     //public function publishModal(){
     //    return view('partials.publishModal');

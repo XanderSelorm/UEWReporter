@@ -91,8 +91,8 @@
       </div>
     
       
-      <div class="col-md-3 card">
-            @include('inc.sidebar-right')
+      <div class="col-md-3 card shadow">
+         @include('inc.sidebar-right')
       </div>
    
 </div>

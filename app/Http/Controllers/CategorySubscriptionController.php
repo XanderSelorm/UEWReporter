@@ -6,7 +6,7 @@ use App\CategorySubscription;
 use Illuminate\Http\Request;
 use App\Category;
 use Auth;
-
+use DB;
 class CategorySubscriptionController extends Controller
 {
     /**
@@ -43,27 +43,22 @@ class CategorySubscriptionController extends Controller
     public function subscribe(Request $request){
         $category_id = $request['category_id'];
         $isSubscribe = $request['subscribed'] === 'true';
-       
         $update = false;
-        // $category = Category::find('category_id');
-        // if (!$category) {
-        //     return null;
-        // }
-        // dd($isSubscribe);
-
+        $category = Category::find($category_id);
+        if (!$category) {
+            return null;
+        }
         $user = Auth::user();
-
         $subscribe = $user->categorySubscriptions()->where('category_id', $category_id)->first();
         if($subscribe){
             $hasSubscribed = $subscribe->subscribed;
             $update = true;
-
             if($hasSubscribed == $isSubscribe){
                 $subscribe->delete();
                 return null;
             }
         }
-        else {
+        else{
             $subscribe = new CategorySubscription;
         }
 
@@ -71,15 +66,47 @@ class CategorySubscriptionController extends Controller
         $subscribe->subscribed = $isSubscribe;
         $subscribe->user_id = $user->id;
         $subscribe->category_id = $category_id;
-        if ($update) {
+        if($update) {
             $subscribe->update();
         }
         else {
-            $subscribe->save();
-        }       
+            $subscribe->save();  
+        }            
+        return null;
 
-        return view('discover')->with('success', 'Subscribed Successfully');
-        //return null;
+        
+
+        
+        // return null;
+    }
+
+    public function unsubscribe(Request $request){
+        $category_id = $request['category_id'];
+        $user_id = Auth::user()->id;
+
+        $subscribe = CategorySubscription::select('id')->where('category_id','=' ,$category_id)->where('user_id','=', $user_id);
+
+        if($subscribe){
+            $subscribe->delete();
+            return null;
+        }
+        // $category = CategorySubscription::find($id);
+        
+        // $category_id = $request['category_id'];
+        // $isSubscribe = $request['subscribed'] === 'false';
+
+        // if (!$category) {
+        //     return null;
+        // }
+        // $user = Auth::user();
+
+        // $subscribe = $user->categorySubscriptions()->where('category_id', $category_id)->first();
+        // if($subscribe){
+        //     $subscribe->delete();
+        //     return null;
+        // }
+        
+        // return view('discover')->with('success', 'Unsubscribe Successful');
     }
 
     /**
