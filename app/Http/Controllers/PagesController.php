@@ -18,7 +18,23 @@ class PagesController extends Controller
     public function index()
     {
         if ( !is_null(Post::class) ) {
-            // $user = Auth::user()->with('category')->first();    
+            $user = Auth::user();            
+
+            // $subscribe = $user->categorySubscriptions()->where('category_id', $category_id)->first();
+           
+            //If user is not logged in, display only general announcements.
+            if(!Auth::user()){
+                $gen_ann_posts = Post::latest()->where('category_id',1) 
+                ->filter( request( ['month', 'year'] ) )->orderBy('created_at', 'desc')
+                ->paginate(5);
+                return view('pages.index')->with(['gen_ann_posts' => $gen_ann_posts]);
+            }
+
+
+            $cat_subs = CategorySubscription::select('category_id')->where('user_id','=' ,$user->id); 
+            $category_id = Category::find('id', );
+
+            //If User is logged in, display variety of posts
             $posts = Post::latest()->with('category')->first() 
             ->filter( request( ['month', 'year'] ) )->orderBy('created_at', 'desc')
             ->paginate(5);
@@ -28,6 +44,7 @@ class PagesController extends Controller
         else {
             return view('pages.index')->with(['posts' => $posts]);
         }
+
     }
 
     // public function login(){
@@ -70,6 +87,7 @@ class PagesController extends Controller
         else {
             $isSubscribed = 0;
         }
+        
         // dd($isSubscribed);
         return view('pages.discover')->with('categories', $categories)->withUser($user)->with('cat_subs', $cat_subs)->with('isSubscribed', $isSubscribed)->with('user_sub', $user_sub);
     }

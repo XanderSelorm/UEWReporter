@@ -39,7 +39,7 @@
                      <div class="media-heading row">
                         <a class="h4" id="cat_name">{{$category->display_name}}</a>
                         <span class="ml-auto" data-categoryid="{{ $category->id }}">
-                           <button name="subscribed" type="button" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary text-light">{{Auth::user()->categorySubscriptions()->where('category_id', $category->id)->first() ? Auth::user()->categorySubscriptions()->where('category_id', $category->id)->first()->subscribed == 1 ? 'Unsubscribe' : 'Subscribe' : 'Subscribe' }}</button>
+                           <a name="subscribed" id="btnSubscribe{{$category->id}}" class="btnSubscribe btn btn-primary text-light">{{Auth::user()->categorySubscriptions()->where('category_id', $category->id)->first() ? Auth::user()->categorySubscriptions()->where('category_id', $category->id)->first()->subscribed == 1 ? 'Unsubscribe' : 'Subscribe' : 'Subscribe' }}</a>
                            {{-- <button name="unsubscribed" type="button" id="btnUnsubscribe{{$category->id}}" class="btnUnsubscribe btn btn-info text-light">Unsubscribe <i class="fa fa-times"></i></button> --}}
                         </span>
                      </div>
@@ -84,30 +84,36 @@
       var token = '{{ Session::token() }}';
       var urlSubscribe = '{{ route('discover.category.subscribe') }}';
       var urlUnsubscribe = 'discover/category/unsubscribe/{{$category->id}}';
-      var btnUnsubscribe =  $('.category').find('.row').find('button.btnUnsubscribe');
-      var btnSubscribe =  $('.category').find('.row').find('button.btnSubscribe');
+      var btnUnsubscribe =  $('.category').find('.row').find('a.btnUnsubscribe');
+      var btnSubscribe =  $('.category').find('.row').find('a.btnSubscribe');
     
-        $('.category').find('.row').find('button.btnSubscribe').on('click', function(event) {
+        $('.category').find('.row').find('a.btnSubscribe').on('click', function(event) {
            event.preventDefault();
             //save this to var
             var thisContext = $(this);
+            var me = event.target;
             category_id = event.target.parentNode.dataset['categoryid'];
             var isSubscribe = event.target.previousElementSibling == null;
             console.log(category_id, isSubscribe, thisContext);
 
-            if(thisContext.hasClass('btn-success')){
-               $(this).removeClass('btn-success');
-            }
-            thisContext.addClass('btn-info').html('wait <i class="fa fa-sync fa-spin"></i>');
+            // thisContext.html('wait <i class="fa fa-sync fa-spin"></i>');
             
             $.ajax({
                method: 'POST',
                url: urlSubscribe,
                data: {subscribed: isSubscribe, category_id: category_id, _token: token}, 
                success: function(result) {   
-                  thisContext.removeClass('btn-info').addClass('btn-success').html('Success <i class="fa fa-check"></i>');
-                  setTimeout(function() {
-                     thisContext.removeClass('btn-success').addClass('btn-info').html('Unubscribe <i class="fa fa-times"></i>'); 
+                  // thisContext.html('Success <i class="fa fa-check"></i>');
+                  setTimeout(function() { 
+                     if (me.textContent == 'Subscribe'){ 
+                        me.textContent = 'Unsubscribe';
+                        // alert('true');
+                     }
+                     else{
+                        me.textContent = 'Subscribe';
+                        // alert('false');
+                     }
+                     //thisContext.removeClass('btn-success').addClass('btn-primary').innerText = 'Subscribe' ? 'Unsubscribe' : 'Subscribe';alert('asda');
                   }, 1000); 
                   console.debug(result);  
                },
@@ -119,9 +125,6 @@
                   }, 1000);
                }
             });
-            // done(function() {
-            //    event.target.innerHTML = isSubscribe ? event.target.innerHTML == 'Subscribe' ? addClass('ben-success')'Subscribed! <i class="fa fa-check"></i>'
-            // });
          });
 
          // $('.category').find('.row').find('button.btnUnsubscribe').on('click', function(event) {

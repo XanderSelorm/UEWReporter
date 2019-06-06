@@ -23,7 +23,7 @@ class Category extends Model
 
     public function categorySubscriptions()
     {
-        return $this->belongsToMany(CategorySubscription::class);
+        return $this->hasMany(CategorySubscription::class);
     }
     
     // public function subscribe($userId = null)
